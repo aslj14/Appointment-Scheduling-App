@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox layoutX="21.0" layoutY="21.0" prefHeight="37.0" prefWidth="284.0">
+         <children>
+            <Label prefHeight="27.0" prefWidth="285.0" text="Appointment Scheduling System">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox layoutX="415.0" layoutY="67.0" prefHeight="37.0" prefWidth="390.0">
+         <children>
+            <RadioButton mnemonicParsing="false" text="View by Week">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </RadioButton>
+            <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="View by Month">
+               <padding>
+                  <Insets right="20.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton layoutX="106.0" layoutY="10.0" mnemonicParsing="false" text="View All Appointments" />
+         </children>
+      </HBox>
+      <TableView layoutX="31.0" layoutY="150.0" prefHeight="200.0" prefWidth="793.0">
+        <columns>
+          <TableColumn prefWidth="126.66665267944336" text="Customer ID" />
+          <TableColumn prefWidth="99.99998474121094" text="Name" />
+            <TableColumn prefWidth="153.99996948242188" text="Address" />
+            <TableColumn prefWidth="100.66671752929688" text="State/Province" />
+            <TableColumn minWidth="0.0" prefWidth="84.6666259765625" text="Country" />
+            <TableColumn minWidth="0.0" prefWidth="113.33331298828125" text="Postal Code" />
+            <TableColumn prefWidth="109.3333740234375" text="Phone Number" />
+        </columns>
+      </TableView>
+      <HBox layoutX="415.0" layoutY="112.0" prefHeight="37.0" prefWidth="390.0">
+         <children>
+            <RadioButton mnemonicParsing="false" text="View All Customers">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </RadioButton>
+         </children>
+      </HBox>
+      <HBox layoutX="121.0" layoutY="361.0" prefHeight="56.0" prefWidth="459.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Add Customer">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Modify Customer">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </Button>
+            <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Delete Customer" />
+         </children>
+      </HBox>
+      <HBox layoutX="273.0" layoutY="406.0" prefHeight="37.0" prefWidth="155.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Reports" />
+         </children>
+      </HBox>
+      <HBox layoutX="621.0" layoutY="450.0" prefHeight="27.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Logout">
+               <HBox.margin>
+                  <Insets left="40.0" right="-0.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
