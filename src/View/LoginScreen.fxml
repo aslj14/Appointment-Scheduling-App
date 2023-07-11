@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginScreenController">
    <children>
       <HBox layoutX="185.0" layoutY="27.0" prefHeight="61.0" prefWidth="200.0">
          <children>
@@ -52,12 +52,12 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField prefWidth="208.0" GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="loginscreenusername" prefWidth="208.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="loginscreenpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <HBox prefHeight="44.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" text="Login" />
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" text="Reset">
+                        <Button mnemonicParsing="false" onAction="#onActionDisplayMainAppts" prefHeight="31.0" prefWidth="95.0" text="Login" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionResetFields" prefHeight="31.0" prefWidth="95.0" text="Reset">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
