@@ -30,15 +30,15 @@ public class LoginScreenController implements Initializable {
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainAppointmentScreen.fxml"));
             Scene scene = new Scene(loader.load());
-            stage.setTitle("Inventory Management System");
+            stage.setTitle("Appointment Scheduling System");
             stage.setScene(scene);
             stage.show();
         }
 
         @FXML
         void onActionResetFields(ActionEvent event) {
-            loginscreenusername.setText("");
-            loginscreenpassword.setText("");
+            this.loginscreenusername.setText("");
+            this.loginscreenpassword.setText("");
         }
 
     @Override

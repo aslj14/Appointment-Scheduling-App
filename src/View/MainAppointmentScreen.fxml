@@ -6,11 +6,12 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainAppointmentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainAppointmentController">
    <children>
       <HBox layoutX="21.0" layoutY="21.0" prefHeight="37.0" prefWidth="284.0">
          <children>
@@ -23,20 +24,29 @@
       </HBox>
       <HBox layoutX="585.0" layoutY="58.0" prefHeight="37.0" prefWidth="390.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="View by Week">
+            <RadioButton fx:id="apptweekview" mnemonicParsing="false" selected="true" text="View by Week">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="apptweekviewTG" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="View by Month">
+            <RadioButton fx:id="apptmonthview" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="View by Month">
                <padding>
                   <Insets right="20.0" />
                </padding>
+               <toggleGroup>
+                  <ToggleGroup fx:id="apptmonthviewTG" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="106.0" layoutY="10.0" mnemonicParsing="false" text="View All Appointments" />
+            <RadioButton fx:id="allapptsview" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" text="View All Appointments">
+               <toggleGroup>
+                  <ToggleGroup fx:id="allapptsviewTG" />
+               </toggleGroup></RadioButton>
          </children>
       </HBox>
       <TableView layoutX="15.0" layoutY="144.0" prefHeight="200.0" prefWidth="969.0">
@@ -57,39 +67,42 @@
       </TableView>
       <HBox layoutX="585.0" layoutY="106.0" prefHeight="37.0" prefWidth="390.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="View All Customers">
+            <RadioButton fx:id="allcustomersview" mnemonicParsing="false" text="View All Customers">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="allcustomersviewTG" />
+               </toggleGroup>
             </RadioButton>
          </children>
       </HBox>
       <HBox layoutX="241.0" layoutY="364.0" prefHeight="56.0" prefWidth="459.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Add Appointment">
+            <Button mnemonicParsing="false" onAction="#onActionAddAppt" prefHeight="25.0" prefWidth="122.0" text="Add Appointment">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Modify Appointment">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionModifyAppt" prefHeight="25.0" prefWidth="135.0" text="Modify Appointment">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Delete Appointment" />
+            <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionDeleteAppt" prefHeight="25.0" prefWidth="136.0" text="Delete Appointment" />
          </children>
       </HBox>
       <HBox layoutX="393.0" layoutY="409.0" prefHeight="37.0" prefWidth="155.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Reports" />
+            <Button mnemonicParsing="false" onAction="#onActionDisplayReports" prefHeight="25.0" prefWidth="135.0" text="Reports" />
          </children>
       </HBox>
       <HBox layoutX="786.0" layoutY="458.0" prefHeight="27.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Logout">
+            <Button mnemonicParsing="false" onAction="#onActionLogoutMainApptScreen" prefHeight="25.0" prefWidth="135.0" text="Logout">
                <HBox.margin>
                   <Insets left="40.0" right="-0.0" />
                </HBox.margin>
