@@ -24,6 +24,9 @@ public class MainAppointmentController implements Initializable {
     private RadioButton allapptsview;
 
     @FXML
+    private ToggleGroup allapptsviewTG;
+
+    @FXML
     private RadioButton allcustomersview;
 
     @FXML
@@ -31,9 +34,6 @@ public class MainAppointmentController implements Initializable {
 
     @FXML
     private RadioButton apptweekview;
-
-    @FXML
-    private ToggleGroup apptweekviewTG;
 
     @FXML
     void onActionAddAppt(ActionEvent event) throws IOException {

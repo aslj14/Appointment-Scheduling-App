@@ -24,26 +24,20 @@
       </HBox>
       <HBox layoutX="585.0" layoutY="58.0" prefHeight="37.0" prefWidth="390.0">
          <children>
-            <RadioButton fx:id="apptweekview" mnemonicParsing="false" selected="true" text="View by Week">
+            <RadioButton fx:id="apptweekview" mnemonicParsing="false" text="View by Week">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
-               <toggleGroup>
-                  <ToggleGroup fx:id="apptweekviewTG" />
-               </toggleGroup>
             </RadioButton>
             <RadioButton fx:id="apptmonthview" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="View by Month">
                <padding>
                   <Insets right="20.0" />
                </padding>
-               <toggleGroup>
-                  <ToggleGroup fx:id="apptmonthviewTG" />
-               </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="allapptsview" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" text="View All Appointments">
+            <RadioButton fx:id="allapptsview" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="View All Appointments">
                <toggleGroup>
                   <ToggleGroup fx:id="allapptsviewTG" />
                </toggleGroup></RadioButton>
@@ -74,9 +68,6 @@
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
-               <toggleGroup>
-                  <ToggleGroup fx:id="allcustomersviewTG" />
-               </toggleGroup>
             </RadioButton>
          </children>
       </HBox>
