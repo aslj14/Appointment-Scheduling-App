@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReportsContactController">
    <children>
       <HBox layoutX="14.0" layoutY="26.0" prefHeight="62.0" prefWidth="200.0">
          <children>
@@ -35,35 +35,35 @@
       </TableView>
       <HBox layoutX="80.0" layoutY="96.0" prefHeight="30.0" prefWidth="770.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="Contact Schedule">
+            <RadioButton fx:id="maincontactsched" mnemonicParsing="false" selected="true" text="Contact Schedule">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="171.0" text="Total Customers by Type">
+            <RadioButton fx:id="contactcustsbytype" mnemonicParsing="false" prefHeight="17.0" prefWidth="171.0" text="Total Customers by Type">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Total Customers by Month">
+            <RadioButton fx:id="contactcustsbymonth" mnemonicParsing="false" text="Total Customers by Month">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton layoutX="395.0" layoutY="10.0" mnemonicParsing="false" text="Total Customers by Country" />
+            <RadioButton fx:id="contactcustsbycountry" layoutX="395.0" layoutY="10.0" mnemonicParsing="false" text="Total Customers by Country" />
          </children>
       </HBox>
       <HBox layoutX="638.0" layoutY="456.0" prefHeight="30.0" prefWidth="248.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Cancel">
+            <Button mnemonicParsing="false" onAction="#onActionDisplayMainScreen" prefHeight="25.0" prefWidth="136.0" text="Cancel">
                <HBox.margin>
                   <Insets right="60.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Logout" />
+            <Button mnemonicParsing="false" onAction="#onActionExitReportsContact" prefHeight="25.0" prefWidth="136.0" text="Logout" />
          </children>
       </HBox>
-      <HBox layoutX="238.0" layoutY="133.0" prefHeight="39.0" prefWidth="311.0">
+      <HBox fx:id="selectcontact" layoutX="238.0" layoutY="133.0" prefHeight="39.0" prefWidth="311.0">
          <children>
             <Label prefHeight="17.0" prefWidth="126.0" text="Select a Contact:">
                <HBox.margin>

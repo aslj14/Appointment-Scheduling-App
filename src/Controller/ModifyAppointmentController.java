@@ -69,7 +69,7 @@ public class ModifyAppointmentController implements Initializable {
 
     @FXML
     void onActionModAppt(ActionEvent event) {
-
+        System.exit(0);
     }
 
     @Override
