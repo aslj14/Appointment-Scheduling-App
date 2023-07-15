@@ -56,8 +56,8 @@
                   <TextField fx:id="loginscreenpassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <HBox prefHeight="44.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onActionDisplayMainAppts" prefHeight="31.0" prefWidth="95.0" text="Login" />
-                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionResetFields" prefHeight="31.0" prefWidth="95.0" text="Reset">
+                        <Button fx:id="loginbutton" mnemonicParsing="false" onAction="#onActionDisplayMainAppts" prefHeight="31.0" prefWidth="95.0" text="Login" />
+                        <Button fx:id="resetbutton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionResetFields" prefHeight="31.0" prefWidth="95.0" text="Reset">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
