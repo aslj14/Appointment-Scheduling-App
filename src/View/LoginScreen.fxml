@@ -16,7 +16,7 @@
    <children>
       <HBox layoutX="185.0" layoutY="27.0" prefHeight="61.0" prefWidth="200.0">
          <children>
-            <Label alignment="CENTER" prefHeight="55.0" prefWidth="201.0" text="LOGIN" textAlignment="CENTER">
+            <Label fx:id="mainscreenlabel" alignment="CENTER" prefHeight="55.0" prefWidth="201.0" text="LOGIN" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="38.0" />
                </font>
@@ -37,17 +37,17 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Username:">
+                  <Label fx:id="usernamelabel" text="Username:">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Password:" GridPane.rowIndex="1">
+                  <Label fx:id="passwordlabel" text="Password:" GridPane.rowIndex="1">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Timezone:" GridPane.rowIndex="3">
+                  <Label fx:id="timezonelabel" text="Timezone:" GridPane.rowIndex="3">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -67,6 +67,7 @@
                         <Insets top="10.0" />
                      </GridPane.margin>
                   </HBox>
+                  <Label fx:id="zonelabel" prefHeight="51.0" prefWidth="208.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>

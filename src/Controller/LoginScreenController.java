@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -32,7 +33,22 @@ public class LoginScreenController implements Initializable {
         private TextField loginscreenusername;
 
         @FXML
+        private Label mainscreenlabel;
+
+        @FXML
+        private Label passwordlabel;
+
+        @FXML
         private Button resetbutton;
+
+        @FXML
+        private Label timezonelabel;
+
+        @FXML
+        private Label usernamelabel;
+
+        @FXML
+        private Label zonelabel;
 
         @FXML
         void onActionDisplayMainAppts(ActionEvent event) throws IOException {
