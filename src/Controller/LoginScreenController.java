@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.ZoneId;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -95,6 +96,9 @@ public class LoginScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        zonelabel.setText(String.valueOf(ZoneId.systemDefault()));
+
           try {
               if (Locale.getDefault().getLanguage().equals("fr")) {
                   ResourceBundle rb = ResourceBundle.getBundle("bundle/Languages_fr", Locale.getDefault());
@@ -105,8 +109,8 @@ public class LoginScreenController implements Initializable {
                   loginbutton.setText(rb.getString("Login"));
                   resetbutton.setText(rb.getString("Reset"));
                   timezonelabel.setText(rb.getString("Timezone"));
-                  stage.setTitle(rb.getString("Appointment") + " " + rb.getString("Scheduling") +
-                                " " + rb.getString("System"));
+                  //stage.setTitle(rb.getString("Appointment") + " " + rb.getString("Scheduling") +
+                  //" " + rb.getString("System"));
               }
           } catch (Exception e) {
                   System.out.println("Error:" + e.getMessage());

@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.ZoneId;
 import java.util.Locale;
 
 public class Main extends Application {
@@ -20,7 +21,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Locale.setDefault(new Locale("fr"));
+        //Locale.setDefault(new Locale("fr"));
+        //System.out.println(ZoneId.systemDefault());
         JDBC.openConnection();
         launch(args);
         JDBC.closeConnection();
