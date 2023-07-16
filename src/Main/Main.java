@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("LoginScreen.fxml"));
-        Scene scene = new Scene(loader.load(), 1000, 500);
+        Scene scene = new Scene(loader.load(), 700, 400);
         stage.setTitle("Appointment Scheduling System");
         stage.setScene(scene);
         stage.show();

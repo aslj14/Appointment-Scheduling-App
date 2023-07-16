@@ -67,7 +67,11 @@
                         <Insets top="10.0" />
                      </GridPane.margin>
                   </HBox>
-                  <Label fx:id="zonelabel" prefHeight="51.0" prefWidth="208.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="zonelabel" opacity="0.48" prefHeight="51.0" prefWidth="208.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
          </children>
