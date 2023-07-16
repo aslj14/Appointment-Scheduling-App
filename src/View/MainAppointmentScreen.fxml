@@ -31,16 +31,16 @@
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="mainApptsTG" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="apptmonthview" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="View by Month">
+            <RadioButton fx:id="apptmonthview" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="View by Month" toggleGroup="$mainApptsTG">
                <padding>
                   <Insets right="20.0" />
                </padding>
             </RadioButton>
-            <RadioButton fx:id="allapptsview" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="View All Appointments">
-               <toggleGroup>
-                  <ToggleGroup fx:id="allapptsviewTG" />
-               </toggleGroup></RadioButton>
+            <RadioButton fx:id="allapptsview" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="View All Appointments" toggleGroup="$mainApptsTG" />
          </children>
       </HBox>
       <TableView layoutX="15.0" layoutY="144.0" prefHeight="200.0" prefWidth="969.0">
@@ -61,7 +61,7 @@
       </TableView>
       <HBox layoutX="585.0" layoutY="106.0" prefHeight="37.0" prefWidth="390.0">
          <children>
-            <RadioButton fx:id="allcustomersview" mnemonicParsing="false" text="View All Customers">
+            <RadioButton fx:id="allcustomersview" mnemonicParsing="false" onAction="#onActionDisplayAllCusts" text="View All Customers" toggleGroup="$mainApptsTG">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

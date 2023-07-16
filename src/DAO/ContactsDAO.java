@@ -7,6 +7,8 @@ public interface ContactsDAO {
 
     public ObservableList<Contacts> allContacts();
 
+    ObservableList<Contacts> getAllContacts();
+
     public Contacts getContacts(int contactID);
 
     public int modifyContacts(int contactID, String contactName, String modifiedContactName);

@@ -51,6 +51,11 @@ public class MainAppointmentController implements Initializable {
     }
 
     @FXML
+    void onActionDisplayAllCusts(ActionEvent event) {
+
+    }
+
+    @FXML
     void onActionDisplayReports(ActionEvent event) throws IOException {
         stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ReportsContactScreen.fxml"));
