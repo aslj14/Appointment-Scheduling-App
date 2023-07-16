@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -71,8 +72,9 @@ public class LoginScreenController implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText(rb.getString("Invalid") + " " + rb.getString("username") + " " +
                                          rb.getString("and") + "/" + rb.getString("or") + " " +
-                                         rb.getString("password") + " " + rb.getString("combination") + "." +
+                                         rb.getString("password") + " " + rb.getString("combination") + ". " +
                                          rb.getString("Try") + " " + rb.getString("again") + "!");
+                    alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
                     alert.showAndWait();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
