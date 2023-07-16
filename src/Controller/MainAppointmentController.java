@@ -51,8 +51,13 @@ public class MainAppointmentController implements Initializable {
     }
 
     @FXML
-    void onActionDisplayAllCusts(ActionEvent event) {
-
+    void onActionDisplayAllCusts(ActionEvent event) throws IOException {
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainCustomerScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Appointment Scheduling System");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
