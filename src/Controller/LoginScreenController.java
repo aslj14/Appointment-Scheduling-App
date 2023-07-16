@@ -66,7 +66,7 @@ public class LoginScreenController implements Initializable {
                     stage.setScene(scene);
                     stage.show();
                 } else if (Locale.getDefault().getLanguage().equals("fr")) {
-                    ResourceBundle rb = ResourceBundle.getBundle("bundle/Langauages_fr", Locale.getDefault());
+                    ResourceBundle rb = ResourceBundle.getBundle("bundle/Languages_fr", Locale.getDefault());
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText(rb.getString("Invalid") + " " + rb.getString("username") + " " +
@@ -93,6 +93,21 @@ public class LoginScreenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+          try {
+              if (Locale.getDefault().getLanguage().equals("fr")) {
+                  ResourceBundle rb = ResourceBundle.getBundle("bundle/Languages_fr", Locale.getDefault());
 
-    }
+                  mainscreenlabel.setText(rb.getString("LOGIN"));
+                  usernamelabel.setText(rb.getString("Username"));
+                  passwordlabel.setText(rb.getString("Password"));
+                  loginbutton.setText(rb.getString("Login"));
+                  resetbutton.setText(rb.getString("Reset"));
+                  timezonelabel.setText(rb.getString("Timezone"));
+                  stage.setTitle(rb.getString("Appointment") + " " + rb.getString("Scheduling") +
+                                " " + rb.getString("System"));
+              }
+          } catch (Exception e) {
+                  System.out.println("Error:" + e.getMessage());
+           }
+        }
 }
