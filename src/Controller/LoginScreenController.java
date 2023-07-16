@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import static DAO.DatabaseLogin.databaseLoginQuery;
@@ -64,6 +65,15 @@ public class LoginScreenController implements Initializable {
                     stage.setTitle("Appointment Scheduling System");
                     stage.setScene(scene);
                     stage.show();
+                } else if (Locale.getDefault().getLanguage().equals("fr")) {
+                    ResourceBundle rb = ResourceBundle.getBundle("bundle/Langauages_fr", Locale.getDefault());
+
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText(rb.getString("Invalid") + " " + rb.getString("username") + " " +
+                                         rb.getString("and") + "/" + rb.getString("or") + " " +
+                                         rb.getString("password") + " " + rb.getString("combination") + "." +
+                                         rb.getString("Try") + " " + rb.getString("again") + "!");
+                    alert.showAndWait();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Invalid username and/or password combination. Try again!");
