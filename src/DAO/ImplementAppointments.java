@@ -7,7 +7,9 @@ import javafx.collections.ObservableList;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import static Helper.JDBC.connection;
 public class ImplementAppointments implements AppointmentsDAO {
@@ -24,18 +26,26 @@ public class ImplementAppointments implements AppointmentsDAO {
             while (rs.next()) {
                 int appointmentID = rs.getInt("Appointment_ID");
                 String appointmentTitle = rs.getString("Title");
-                String appointmentDesc = rs.getString("Description")
-                String appointmentLocation = rs.getString("Location")
-                String appointmentType = rs.getString("Type")
-                LocalDateTime appointmentStartDateTime = rs.getTimestamp("Start").toLocalDateTime()
-                LocalDateTime appointmentEndDateTime = rs.getTimestamp("End").toLocalDateTime()
-                int appointmentsCustomerID = rs.getInt("")
-                int appointmentsUserID =
-                int appointmentsContactID =
-                Appointments appointments = new
+                String appointmentDesc = rs.getString("Description");
+                String appointmentLocation = rs.getString("Location");
+                String appointmentType = rs.getString("Type");
+                LocalDateTime appointmentStartDateTime = rs.getTimestamp("Start").toLocalDateTime();
+                LocalDate appointmentsStartDate = appointmentStartDateTime.toLocalDate();
+                LocalTime appointmentStartTime = appointmentStartDateTime.toLocalTime();
+                LocalDateTime appointmentEndDateTime = rs.getTimestamp("End").toLocalDateTime();
+                LocalDate appointmentEndDate = appointmentEndDateTime.toLocalDate();
+                LocalTime appointmentEndTime = appointmentEndDateTime.toLocalTime();
+                int appointmentsCustomerID = rs.getInt("Customer_ID");
+                int appointmentsUserID = rs.getInt("User_ID");
+                int appointmentsContactID = rs.getInt("Contact_ID");
+                Appointments appointments = new Appointments(appointmentID, appointmentTitle,appointmentDesc,
+                                            appointmentLocation, appointmentType, appointmentStartDateTime,
+                                            appointmentsStartDate, appointmentStartTime, appointmentEndDateTime,
+                                            appointmentEndDate, appointmentEndTime, appointmentsCustomerID,
+                                            appointmentsUserID, appointmentsContactID);
                 allAppointments.add(appointments);
             }
-            return allContacts;
+            return allAppointments;
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
         }
