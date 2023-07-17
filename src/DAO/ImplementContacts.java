@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 
 import static Helper.JDBC.connection;
 
-public abstract class ImplementContacts implements ContactsDAO {
+public class ImplementContacts implements ContactsDAO {
 
     ObservableList<Contacts> allContacts = FXCollections.observableArrayList();
 
