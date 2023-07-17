@@ -5,8 +5,6 @@ import javafx.collections.ObservableList;
 
 public interface ContactsDAO {
 
-    public ObservableList<Contacts> allContacts();
-
     ObservableList<Contacts> getAllContacts();
 
     public Contacts getContacts(int contactID);

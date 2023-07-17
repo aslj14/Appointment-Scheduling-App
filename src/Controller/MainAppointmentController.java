@@ -72,6 +72,7 @@ public class MainAppointmentController implements Initializable {
 
     @FXML
     void onActionLogoutMainApptScreen(ActionEvent event) {
+
         System.exit(0);
     }
 
