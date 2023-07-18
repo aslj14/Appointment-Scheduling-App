@@ -1,13 +1,11 @@
 package DAO;
 
 import Model.Appointments;
-import Model.Contacts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -144,7 +142,7 @@ public class ImplementAppointments implements AppointmentsDAO {
             String sql = "INSERT INTO appointments (Appointment_ID = ?, Title = ?. Description = ?, Location = ?," +
                     "Type = ?, Start = ?, End = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, appointmentsID)
+            ps.setInt(1, appointmentsID);
             ps.setString(2, appointmentTitle);
             ps.setString(3, appointmentDesc);
             ps.setString(4, appointmentLocation);

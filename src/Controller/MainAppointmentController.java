@@ -1,14 +1,17 @@
 package Controller;
 
+import DAO.AppointmentsDAO;
+import DAO.ImplementAppointments;
+import Helper.JDBC;
+import Model.Appointments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,9 +27,6 @@ public class MainAppointmentController implements Initializable {
     private RadioButton allapptsview;
 
     @FXML
-    private ToggleGroup allapptsviewTG;
-
-    @FXML
     private RadioButton allcustomersview;
 
     @FXML
@@ -34,6 +34,49 @@ public class MainAppointmentController implements Initializable {
 
     @FXML
     private RadioButton apptweekview;
+
+    @FXML
+    private ToggleGroup mainApptsTG;
+
+    @FXML
+    private TableColumn mainapptscontactcol;
+
+    @FXML
+    private TableColumn mainapptscustomeridcol;
+
+    @FXML
+    private TableColumn mainapptsdesccol;
+
+    @FXML
+    private TableColumn mainapptsenddatecol;
+
+    @FXML
+    private TableColumn mainapptsendtimecol;
+
+    @FXML
+    private TableColumn mainapptsidcol;
+
+    @FXML
+    private TableColumn mainapptslocationcol;
+
+    @FXML
+    private TableColumn mainapptsstartdatecol;
+
+    @FXML
+    private TableColumn mainapptsstarttimecol;
+
+    @FXML
+    private TableView<Appointments> mainapptstableview;
+
+    @FXML
+    private TableColumn mainapptstitlecol;
+
+    @FXML
+    private TableColumn mainapptstypecol;
+
+    @FXML
+    private TableColumn mainapptsuseridcol;
+
 
     @FXML
     void onActionAddAppt(ActionEvent event) throws IOException {
@@ -88,6 +131,24 @@ public class MainAppointmentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        JDBC.openConnection();
+        AppointmentsDAO appointmentsDAO = new ImplementAppointments();
+        mainapptstableview.setItems(appointmentsDAO.getAllAppointments());
+
+        mainapptsidcol.setCellValueFactory(new PropertyValueFactory<>("appointmentID"));
+        mainapptstitlecol.setCellValueFactory(new PropertyValueFactory<>("appointmentTitle"));
+        mainapptsdesccol.setCellValueFactory(new PropertyValueFactory<>("appointmentDesc"));
+        mainapptslocationcol.setCellValueFactory(new PropertyValueFactory<>("appointmentLocation"));
+        mainapptstypecol.setCellValueFactory(new PropertyValueFactory<>("appointmentType"));
+        mainapptsstartdatecol.setCellValueFactory(new PropertyValueFactory<>("appointmentStartDate"));
+        mainapptsstarttimecol.setCellValueFactory(new PropertyValueFactory<>("appointmentStartTime"));
+        mainapptsenddatecol.setCellValueFactory(new PropertyValueFactory<>("appointmentEndDate"));
+        mainapptsendtimecol.setCellValueFactory(new PropertyValueFactory<>("appointmentEndTime"));
+        mainapptscustomeridcol.setCellValueFactory(new PropertyValueFactory<>("appointmentCustomerID"));
+        mainapptsuseridcol.setCellValueFactory(new PropertyValueFactory<>("appointmentUserID"));
+
+
 
     }
 }
