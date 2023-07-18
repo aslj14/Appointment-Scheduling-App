@@ -51,30 +51,37 @@ public class Appointments {
     }
 
     public String getAppointmentTitle() {
+
         return appointmentTitle;
     }
 
     public void setAppointmentTitle(String appointmentTitle) {
+
         this.appointmentTitle = appointmentTitle;
     }
 
     public String getAppointmentDesc() {
+
         return appointmentDesc;
     }
 
     public void setAppointmentDesc(String appointmentDesc) {
+
         this.appointmentDesc = appointmentDesc;
     }
 
     public String getAppointmentLocation() {
+
         return appointmentLocation;
     }
 
     public void setAppointmentLocation(String appointmentLocation) {
+
         this.appointmentLocation = appointmentLocation;
     }
 
     public String getAppointmentType() {
+
         return appointmentType;
     }
 
@@ -83,6 +90,7 @@ public class Appointments {
     }
 
     public LocalDateTime getAppointmentStartDateTime() {
+
         return appointmentStartDateTime;
     }
 
@@ -99,6 +107,7 @@ public class Appointments {
     }
 
     public LocalTime getAppointmentStartTime() {
+
         return appointmentStartTime;
     }
 
@@ -107,6 +116,7 @@ public class Appointments {
     }
 
     public LocalDateTime getAppointmentEndDateTime() {
+
         return appointmentEndDateTime;
     }
 
@@ -115,6 +125,7 @@ public class Appointments {
     }
 
     public LocalDate getAppointmentEndDate() {
+
         return appointmentEndDate;
     }
 
@@ -123,6 +134,7 @@ public class Appointments {
     }
 
     public LocalTime getAppointmentEndTime() {
+
         return appointmentEndTime;
     }
 
@@ -132,6 +144,7 @@ public class Appointments {
 
 
     public int getAppointmentCustomerID() {
+
         return appointmentCustomerID;
     }
 
@@ -140,18 +153,22 @@ public class Appointments {
     }
 
     public int getAppointmentUserID() {
+
         return appointmentUserID;
     }
 
     public void setAppointmentUserID(int appointmentUserID) {
+
         this.appointmentUserID = appointmentCustomerID;
     }
 
     public int getAppointmentContactID() {
+
         return appointmentContactID;
     }
 
     public void setAppointmentContactID(int appointmentContactID) {
+
         this.appointmentContactID = appointmentContactID;
     }
 }

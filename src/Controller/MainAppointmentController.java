@@ -121,12 +121,25 @@ public class MainAppointmentController implements Initializable {
 
     @FXML
     void onActionModifyAppt(ActionEvent event) throws IOException {
-        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ModifyAppointmentScreen.fxml"));
-        Scene scene = new Scene(loader.load());
-        stage.setTitle("Appointment Scheduling System");
-        stage.setScene(scene);
-        stage.show();
+        try {
+                Appointments apptSelected = mainapptstableview.getSelectionModel().getSelectedItem();
+                if (apptSelected == null) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please select an appointment to modify! ");
+                    alert.showAndWait();
+                } else {
+                    stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ModifyAppointmentScreen.fxml"));
+                    Scene scene = new Scene(loader.load());
+                    ModifyAppointmentController controller = loader.getController();
+                    controller.modifyAppointment(apptSelected);
+                    stage.setTitle("Appointment Scheduling System");
+                    stage.setScene(scene);
+                    stage.show();
+                }
+        } catch (Exception e) {
+            System.out.println("Error:" + e.getMessage());
+        }
     }
 
     @Override

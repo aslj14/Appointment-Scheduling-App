@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Appointments;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,6 +57,9 @@ public class ModifyAppointmentController implements Initializable {
 
     @FXML
     private ComboBox<?> modapptuserid;
+
+    public void modifyAppointment(Appointments apptSelected) {
+    }
 
     @FXML
     void onActionDisplayMainAppt(ActionEvent event) throws IOException {
