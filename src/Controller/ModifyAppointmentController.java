@@ -1,6 +1,11 @@
 package Controller;
 
+import DAO.*;
+import Helper.JDBC;
 import Model.Appointments;
+import Model.Contacts;
+import Model.Customers;
+import Model.Users;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 public class ModifyAppointmentController implements Initializable {
@@ -23,10 +29,10 @@ public class ModifyAppointmentController implements Initializable {
     Parent scene;
 
     @FXML
-    private ComboBox<?> modapptcontact;
+    private ComboBox<Contacts> modapptcontact;
 
     @FXML
-    private ComboBox<?> modapptcustid;
+    private ComboBox<Customers> modapptcustid;
 
     @FXML
     private TextField modapptdesc;
@@ -35,7 +41,7 @@ public class ModifyAppointmentController implements Initializable {
     private DatePicker modapptenddate;
 
     @FXML
-    private ComboBox<?> modapptendtime;
+    private ComboBox<LocalTime> modapptendtime;
 
     @FXML
     private TextField modapptid;
@@ -47,7 +53,7 @@ public class ModifyAppointmentController implements Initializable {
     private DatePicker modapptstartdate;
 
     @FXML
-    private ComboBox<?> modapptstarttime;
+    private ComboBox<LocalTime> modapptstarttime;
 
     @FXML
     private TextField modappttitle;
@@ -56,9 +62,12 @@ public class ModifyAppointmentController implements Initializable {
     private TextField modappttype;
 
     @FXML
-    private ComboBox<?> modapptuserid;
+    private ComboBox<Users> modapptuserid;
 
     public void modifyAppointment(Appointments apptSelected) {
+        JDBC.openConnection();
+        ContactsDAO contactsDAO = new ImplementContacts();
+        CustomersDAO customersDAO = new ImplementCustomers();
     }
 
     @FXML
