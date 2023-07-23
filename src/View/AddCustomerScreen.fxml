@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox layoutX="43.0" layoutY="32.0" prefHeight="57.0" prefWidth="200.0">
@@ -77,25 +76,25 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField editable="false" GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ComboBox prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ComboBox prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="addcustid" GridPane.columnIndex="1" />
+                  <TextField fx:id="addcustname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="addcustaddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="addcuststateprovince" prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="addcustcountry" prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="addcustpotalcode" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="addcustphonenumber" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
             </GridPane>
          </children>
       </VBox>
       <HBox layoutX="243.0" layoutY="438.0" prefHeight="30.0" prefWidth="248.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Save">
+            <Button mnemonicParsing="false" onAction="#onActionSaveNewCustomer" prefHeight="25.0" prefWidth="136.0" text="Save">
                <HBox.margin>
                   <Insets right="60.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#onActionDisplayMainCustomers" prefHeight="25.0" prefWidth="136.0" text="Cancel" />
          </children>
       </HBox>
    </children>
