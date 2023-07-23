@@ -1,5 +1,11 @@
 package Controller;
 
+import DAO.AppointmentsDAO;
+import DAO.CustomersDAO;
+import DAO.ImplementAppointments;
+import DAO.ImplementCustomers;
+import Helper.JDBC;
+import Model.Customers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,31 +27,31 @@ public class MainCustomerController implements Initializable {
     Parent scene;
 
     @FXML
-    private TableColumn<?, ?> maincustaddresscol;
+    private TableColumn maincustaddresscol;
 
     @FXML
-    private TableColumn<?, ?> maincustcountrycol;
+    private TableColumn maincustcountrycol;
 
     @FXML
-    private TableColumn<?, ?> maincustidcol;
+    private TableColumn maincustidcol;
 
     @FXML
-    private TableColumn<?, ?> maincustnamecol;
+    private TableColumn maincustnamecol;
 
     @FXML
-    private TableColumn<?, ?> maincustphonenumbercol;
+    private TableColumn maincustphonenumbercol;
 
     @FXML
-    private TableColumn<?, ?> maincustpostalcodecol;
+    private TableColumn maincustpostalcodecol;
 
     @FXML
     private ToggleGroup maincustsTG;
 
     @FXML
-    private TableColumn<?, ?> maincuststatecol;
+    private TableColumn maincuststatecol;
 
     @FXML
-    private TableView<?> maincusttableview;
+    private TableView<Customers> maincusttableview;
 
     @FXML
     private RadioButton maincustviewallappts;
@@ -118,5 +124,15 @@ public class MainCustomerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        JDBC.openConnection();
+        CustomersDAO customersDAO = new ImplementCustomers();
+        maincusttableview.setItems(customersDAO.getAllCustomers());
+
+        maincustidcol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
+        maincustnamecol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        maincustaddresscol.setCellValueFactory(new PropertyValueFactory<>("custeomerAddress"));
+        maincuststatecol.setCellValueFactory(new PropertyValueFactory<>("customerDivision"));
+        maincustpostalcodecol.setCellValueFactory(new PropertyValueFactory<>("customerPostalCode"));
+        maincustphonenumbercol.setCellValueFactory(new PropertyValueFactory<>("customerPhoneNumber"));
     }
 }

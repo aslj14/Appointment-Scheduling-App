@@ -47,8 +47,8 @@ public class ImplementCustomers implements CustomersDAO {
     @Override
     public Customers getCustomer(int appointmentCustomerID) {
         try {
-            String sql = "SELECT * FROM customers, firet_level_divisons, countries WHERE customers.Division_ID " +
-                    " = firet_level_divisons.Division_ID AND firet_level_divisons.Country_ID = countries.Division_ID " +
+            String sql = "SELECT * FROM customers, first_level_divisions, countries WHERE customers.Division_ID " +
+                    " = first_level_divisions.Division_ID AND first_level_divisions.Country_ID = countries.Division_ID " +
                     " Customer_ID = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, appointmentCustomerID);
