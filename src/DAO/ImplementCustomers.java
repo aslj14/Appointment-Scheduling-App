@@ -3,7 +3,6 @@ package DAO;
 import Model.Customers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.scene.control.Alert;
 
 import java.sql.PreparedStatement;
@@ -28,12 +27,15 @@ public class ImplementCustomers implements CustomersDAO {
                 String appointmentCustomerName = rs.getString("Customer_Name");
                 String appointmentCustomerAddress = rs.getString("Customer_Address");
                 String appointmentCustomerPostalCode = rs.getString("Postal_Code");
+                int appointmentCustomerCountryID = rs.getInt("Country_ID");
                 String appointmentCustomerCountry = rs.getString("Country");
+                int appointmentCustomerDivisionID = rs.getInt("Division_ID");
                 String appointmentCustomerDivision = rs.getString("Division");
                 String appointmentCustomerPhoneNumber = rs.getString("Phone_Number");
-                Customers customers = new Customers(appointmentCustomerID, appointmentCustomerName, appointmentCustomerAddress,
-                        appointmentCustomerPostalCode, appointmentCustomerCountry, appointmentCustomerDivision,
-                        appointmentCustomerPhoneNumber);
+                Customers customers = new Customers(appointmentCustomerID, appointmentCustomerName,
+                        appointmentCustomerAddress, appointmentCustomerCountryID, appointmentCustomerCountry,
+                        appointmentCustomerPostalCode, appointmentCustomerPhoneNumber, appointmentCustomerDivisionID,
+                        appointmentCustomerDivision);
                 allCustomers.add(customers);
             }
         } catch (Exception e) {
@@ -58,12 +60,15 @@ public class ImplementCustomers implements CustomersDAO {
                 String appointmentCustomerName = rs.getString("Customer_Name");
                 String appointmentCustomerAddress = rs.getString("Customer_Address");
                 String appointmentCustomerPostalCode = rs.getString("Postal_Code");
+                int appointmentCustomerCountryID = rs.getInt("Country_ID");
                 String appointmentCustomerCountry = rs.getString("Country");
+                int appointmentCustomerDivisionID = rs.getInt("Division_ID");
                 String appointmentCustomerDivision = rs.getString("Division");
                 String appointmentCustomerPhoneNumber = rs.getString("Phone_Number");
-                Customers customers = new Customers(appointmentCustomerID, appointmentCustomerName, appointmentCustomerAddress,
-                        appointmentCustomerPostalCode, appointmentCustomerCountry, appointmentCustomerDivision,
-                        appointmentCustomerPhoneNumber);
+                Customers customers = new Customers(appointmentCustomerID, appointmentCustomerName,
+                        appointmentCustomerAddress, appointmentCustomerCountryID, appointmentCustomerCountry,
+                        appointmentCustomerPostalCode, appointmentCustomerPhoneNumber,
+                        appointmentCustomerDivisionID, appointmentCustomerDivision);
             }
             return customersResult;
         } catch (Exception e) {
