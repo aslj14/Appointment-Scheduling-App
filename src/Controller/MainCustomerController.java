@@ -82,7 +82,7 @@ public class MainCustomerController implements Initializable {
 
     @FXML
     void onActionDisplayMainAppts(ActionEvent event) throws IOException {
-        stage = (Stage) ((RadioButton) event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainAppointmentScreen.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setTitle("Appointment Scheduling System");
