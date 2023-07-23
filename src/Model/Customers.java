@@ -109,8 +109,18 @@ public class Customers {
 
     }
 
-    public void setCustomerDivisionID(int divisionID) {
+    public void setCustomerDivisionID(int customerDivisionID) {
 
         this.customerDivisionID = customerDivisionID;
+    }
+
+    public String getCustomerDivision(String customerDivision) {
+
+        return customerDivision;
+    }
+
+    public void setCustomerDivision(String customerDivision) {
+
+        this.customerDivision = customerDivision;
     }
 }

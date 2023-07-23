@@ -1,4 +1,10 @@
 package DAO;
 
-public class DivisionsDAO {
+import javafx.collections.ObservableList;
+
+public interface DivisionsDAO {
+
+    public ObservableList<>
+
+
 }

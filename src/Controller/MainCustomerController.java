@@ -130,8 +130,7 @@ public class MainCustomerController implements Initializable {
 
         maincustidcol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
         maincustnamecol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
-        maincustaddresscol.setCellValueFactory(new PropertyValueFactory<>("custeomerAddress"));
-        maincuststatecol.setCellValueFactory(new PropertyValueFactory<>("customerDivision"));
+        maincustaddresscol.setCellValueFactory(new PropertyValueFactory<>("customerAddress"));
         maincustpostalcodecol.setCellValueFactory(new PropertyValueFactory<>("customerPostalCode"));
         maincustphonenumbercol.setCellValueFactory(new PropertyValueFactory<>("customerPhoneNumber"));
     }

@@ -17,21 +17,21 @@ public class ImplementCustomers implements CustomersDAO {
     @Override
     public ObservableList<Customers> getAllCustomers() {
         try {
-            String sql = "SELECT * FROM customers, firet_level_divisons, countries WHERE customers.Division_ID " +
-                    " = firet_level_divisons.Division_ID AND firet_level_divisons.Country_ID = countries.Division_ID ";
+            String sql = "SELECT * FROM customers INNER JOIN first_level_divisions ON customers.Division_ID =  " +
+                    " first_level_divisions.Division_ID INNER JOIN countries ON countries.Country_ID = first_level_divisions.Country_ID ";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 int appointmentCustomerID = rs.getInt("Customer_ID");
                 String appointmentCustomerName = rs.getString("Customer_Name");
-                String appointmentCustomerAddress = rs.getString("Customer_Address");
+                String appointmentCustomerAddress = rs.getString("Address");
                 String appointmentCustomerPostalCode = rs.getString("Postal_Code");
                 int appointmentCustomerCountryID = rs.getInt("Country_ID");
                 String appointmentCustomerCountry = rs.getString("Country");
                 int appointmentCustomerDivisionID = rs.getInt("Division_ID");
                 String appointmentCustomerDivision = rs.getString("Division");
-                String appointmentCustomerPhoneNumber = rs.getString("Phone_Number");
+                String appointmentCustomerPhoneNumber = rs.getString("Phone");
                 Customers customers = new Customers(appointmentCustomerID, appointmentCustomerName,
                         appointmentCustomerAddress, appointmentCustomerCountryID, appointmentCustomerCountry,
                         appointmentCustomerPostalCode, appointmentCustomerPhoneNumber, appointmentCustomerDivisionID,
@@ -58,13 +58,13 @@ public class ImplementCustomers implements CustomersDAO {
             if (rs.next()) {
                 appointmentCustomerID = rs.getInt("Customer_ID");
                 String appointmentCustomerName = rs.getString("Customer_Name");
-                String appointmentCustomerAddress = rs.getString("Customer_Address");
+                String appointmentCustomerAddress = rs.getString("Address");
                 String appointmentCustomerPostalCode = rs.getString("Postal_Code");
                 int appointmentCustomerCountryID = rs.getInt("Country_ID");
                 String appointmentCustomerCountry = rs.getString("Country");
                 int appointmentCustomerDivisionID = rs.getInt("Division_ID");
                 String appointmentCustomerDivision = rs.getString("Division");
-                String appointmentCustomerPhoneNumber = rs.getString("Phone_Number");
+                String appointmentCustomerPhoneNumber = rs.getString("Phone");
                 Customers customers = new Customers(appointmentCustomerID, appointmentCustomerName,
                         appointmentCustomerAddress, appointmentCustomerCountryID, appointmentCustomerCountry,
                         appointmentCustomerPostalCode, appointmentCustomerPhoneNumber,
@@ -83,7 +83,7 @@ public class ImplementCustomers implements CustomersDAO {
                                int appointmentCustomerDivisionID) {
         int affectedRows = 0;
         try {
-            String sql = "INSERT INTO customers (Customer_Name, Address, Postal_Code, Phone, Divison_ID) " +
+            String sql = "INSERT INTO customers (Customer_Name, Address, Postal_Code, Phone, Division_ID) " +
                     "VALUES(?, ?, ?, ?, ?)";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, appointmentCustomerName);
