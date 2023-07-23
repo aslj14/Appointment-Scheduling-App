@@ -6,6 +6,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -23,36 +24,39 @@
       </HBox>
       <HBox layoutX="415.0" layoutY="67.0" prefHeight="37.0" prefWidth="390.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="View by Week">
+            <RadioButton fx:id="maincustviewbywk" mnemonicParsing="false" onAction="#onActionViewByMonth" text="View by Week">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <HBox.margin>
                   <Insets right="20.0" />
                </HBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="maincustsTG" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="View by Month">
+            <RadioButton fx:id="maincustviewbymonth" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionViewByMonth" text="View by Month" toggleGroup="$maincustsTG">
                <padding>
                   <Insets right="20.0" />
                </padding>
             </RadioButton>
-            <RadioButton layoutX="106.0" layoutY="10.0" mnemonicParsing="false" text="View All Appointments" />
+            <RadioButton fx:id="maincustviewallappts" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionDisplayMainAppts" text="View All Appointments" toggleGroup="$maincustsTG" />
          </children>
       </HBox>
-      <TableView layoutX="31.0" layoutY="150.0" prefHeight="200.0" prefWidth="793.0">
+      <TableView fx:id="maincusttableview" layoutX="31.0" layoutY="150.0" prefHeight="200.0" prefWidth="793.0">
         <columns>
-          <TableColumn prefWidth="126.66665267944336" text="Customer ID" />
-          <TableColumn prefWidth="99.99998474121094" text="Name" />
-            <TableColumn prefWidth="153.99996948242188" text="Address" />
-            <TableColumn prefWidth="100.66671752929688" text="State/Province" />
-            <TableColumn minWidth="0.0" prefWidth="84.6666259765625" text="Country" />
-            <TableColumn minWidth="0.0" prefWidth="113.33331298828125" text="Postal Code" />
-            <TableColumn prefWidth="109.3333740234375" text="Phone Number" />
+          <TableColumn fx:id="maincustidcol" prefWidth="126.66665267944336" text="Customer ID" />
+          <TableColumn fx:id="maincustnamecol" prefWidth="99.99998474121094" text="Name" />
+            <TableColumn fx:id="maincustaddresscol" prefWidth="153.99996948242188" text="Address" />
+            <TableColumn fx:id="maincuststatecol" prefWidth="100.66671752929688" text="State/Province" />
+            <TableColumn fx:id="maincustcountrycol" minWidth="0.0" prefWidth="84.6666259765625" text="Country" />
+            <TableColumn fx:id="maincustpostalcodecol" minWidth="0.0" prefWidth="113.33331298828125" text="Postal Code" />
+            <TableColumn fx:id="maincustphonenumbercol" prefWidth="109.3333740234375" text="Phone Number" />
         </columns>
       </TableView>
       <HBox layoutX="415.0" layoutY="112.0" prefHeight="37.0" prefWidth="390.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="View All Customers">
+            <RadioButton fx:id="maincustviewallcusts" mnemonicParsing="false" selected="true" text="View All Customers" toggleGroup="$maincustsTG">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -64,27 +68,27 @@
       </HBox>
       <HBox layoutX="121.0" layoutY="361.0" prefHeight="56.0" prefWidth="459.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" text="Add Customer">
+            <Button mnemonicParsing="false" onAction="#onActionAddCustomer" prefHeight="25.0" prefWidth="122.0" text="Add Customer">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Modify Customer">
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionModifyCustomer" prefHeight="25.0" prefWidth="135.0" text="Modify Customer">
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin>
             </Button>
-            <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Delete Customer" />
+            <Button layoutX="62.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionDeleteCustomer" prefHeight="25.0" prefWidth="136.0" text="Delete Customer" />
          </children>
       </HBox>
       <HBox layoutX="273.0" layoutY="406.0" prefHeight="37.0" prefWidth="155.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Reports" />
+            <Button mnemonicParsing="false" onAction="#onActionDisplayReports" prefHeight="25.0" prefWidth="135.0" text="Reports" />
          </children>
       </HBox>
       <HBox layoutX="621.0" layoutY="450.0" prefHeight="27.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" text="Logout">
+            <Button mnemonicParsing="false" onAction="#onActionLogout" prefHeight="25.0" prefWidth="135.0" text="Logout">
                <HBox.margin>
                   <Insets left="40.0" right="-0.0" />
                </HBox.margin>
