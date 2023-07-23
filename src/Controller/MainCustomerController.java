@@ -2,18 +2,23 @@ package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleGroup;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainCustomerController implements Initializable {
+
+    Stage stage;
+    Parent scene;
 
     @FXML
     private TableColumn<?, ?> maincustaddresscol;
@@ -55,8 +60,13 @@ public class MainCustomerController implements Initializable {
     private RadioButton maincustviewbywk;
 
     @FXML
-    void onActionAddCustomer(ActionEvent event) {
-
+    void onActionAddCustomer(ActionEvent event) throws IOException {
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("AddCustomerScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Appointment Scheduling System");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -65,23 +75,38 @@ public class MainCustomerController implements Initializable {
     }
 
     @FXML
-    void onActionDisplayMainAppts(ActionEvent event) {
-
+    void onActionDisplayMainAppts(ActionEvent event) throws IOException {
+        stage = (Stage) ((RadioButton) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainAppointmentScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Appointment Scheduling System");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
-    void onActionDisplayReports(ActionEvent event) {
-
+    void onActionDisplayReports(ActionEvent event) throws IOException {
+        stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ReportsContactScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Appointment Scheduling System");
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
     void onActionLogout(ActionEvent event) {
-
+        System.exit(0);
     }
 
     @FXML
-    void onActionModifyCustomer(ActionEvent event) {
-
+    void onActionModifyCustomer(ActionEvent event) throws IOException {
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ModifyCustomerScreen.fxml"));
+            Scene scene = new Scene(loader.load());
+            stage.setTitle("Appointment Scheduling System");
+            stage.setScene(scene);
+            stage.show();
     }
 
     @FXML
