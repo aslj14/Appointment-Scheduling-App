@@ -107,7 +107,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="addapptid" promptText="Auto-Generated" GridPane.columnIndex="1">
+                  <TextField fx:id="addapptid" disable="true" editable="false" promptText="Auto-Generated" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
