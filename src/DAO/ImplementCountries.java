@@ -1,6 +1,8 @@
 package DAO;
 
+import Helper.JDBC;
 import Model.Countries;
+import Model.Divisions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -85,7 +87,25 @@ public class ImplementCountries implements CountriesDAO {
 
     @Override
     public int deleteCountry(int currentCountryID, String currentCountryName) {
-        return 0;
-    }
+        int affectedRows = 0;
+        JDBC.openConnection();
+        DivisionsDAO divisionsDAO = new ImplementDivisions();
 
+        try {
+            if (divisionsDAO.getDivisionCountry(currentCountryID).isEmpty()) {
+                try {
+                    String sql = "DELETE FROM contacts WHERE Country_ID = ? AND Country = ?";
+                    PreparedStatement ps = connection.prepareStatement(sql);
+                    ps.setInt(1, currentCountryID);
+                    ps.setString(2, currentCountryName);
+                    affectedRows = ps.executeUpdate();
+                } catch (Exception e) {
+                    System.out.println("Error:" + e.getMessage());
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return affectedRows;
+    }
 }

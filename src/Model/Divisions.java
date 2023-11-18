@@ -4,12 +4,15 @@ public class Divisions {
 
     private int divisionID;
 
+    private int countryID;
+
     private String divisionName;
 
     private String divisionCountryID;
 
-    public Divisions(int divisionID, String divisionName, String divisionCountryID) {
+    public Divisions(int divisionID, int countryID, String divisionName, String divisionCountryID) {
         this.divisionID = divisionID;
+        this.countryID = countryID;
         this.divisionName = divisionName;
         this.divisionCountryID = divisionCountryID;
     }
