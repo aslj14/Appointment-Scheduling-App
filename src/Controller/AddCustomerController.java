@@ -1,7 +1,9 @@
 package Controller;
 
 import DAO.CountriesDAO;
+import DAO.CustomersDAO;
 import DAO.ImplementCountries;
+import DAO.ImplementCustomers;
 import Helper.JDBC;
 import Model.Countries;
 import Model.Divisions;
@@ -64,9 +66,27 @@ public class AddCustomerController implements Initializable {
     }
 
     @FXML
-    void onActionSaveNewCustomer(ActionEvent event) {
+    void onActionSaveNewCustomer(ActionEvent event) throws IOException {
+        try {
+            String customerName = addcustname.getText();
+            String customerAddress = addcustaddress.getText();
+            String customerPostalCode = addcustpotalcode.getText();
+            String customerPhoneNumber = addcustphonenumber.getText();
+            int divisionCountryID = addcuststateprovince.getSelectionModel().getSelectedItem().getDivisionID();
 
-
+            CustomersDAO customersDAO = new ImplementCustomers();
+            customersDAO.addNewCustomers(customerName, customerAddress, customerPostalCode, customerPhoneNumber,
+                    divisionCountryID);
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainCustomerScreen.fxml"));
+            Scene scene = new Scene(loader.load());
+            stage.setTitle("Appointment Scheduling System");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Error: ");
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -89,7 +109,6 @@ public class AddCustomerController implements Initializable {
             addcuststateprovince.getSelectionModel().selectFirst();
         } catch (Exception e) {
             System.out.println("Error: ");
-            e.printStackTrace();
         }
     }
 
