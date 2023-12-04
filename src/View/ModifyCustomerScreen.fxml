@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox layoutX="43.0" layoutY="32.0" prefHeight="57.0" prefWidth="200.0">
@@ -77,7 +76,10 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField editable="false" GridPane.columnIndex="1" />
+                  <TextField disable="true" promptText="Auto-Generated" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></TextField>
                   <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <ComboBox prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
