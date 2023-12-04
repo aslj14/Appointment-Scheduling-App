@@ -76,11 +76,14 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="addcustid" GridPane.columnIndex="1" />
+                  <TextField fx:id="addcustid" disable="true" editable="false" promptText="Auto-Generated" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></TextField>
                   <TextField fx:id="addcustname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="addcustaddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <ComboBox fx:id="addcuststateprovince" prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ComboBox fx:id="addcustcountry" prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="addcustcountry" onAction="#onActionSelectACountry" prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <TextField fx:id="addcustpotalcode" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <TextField fx:id="addcustphonenumber" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>

@@ -40,4 +40,9 @@ public class Divisions {
     public void setDivisionCountryID(String divisionCountryID) {
         this.divisionCountryID = divisionCountryID;
     }
+
+    @Override
+    public String toString() {
+        return divisionName;
+    }
 }

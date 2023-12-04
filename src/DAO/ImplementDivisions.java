@@ -17,8 +17,8 @@ public class ImplementDivisions implements DivisionsDAO {
     @Override
     public ObservableList<Divisions> getAllDivisions() {
         try {
-            String sql = "SELECT * FROM first_level_divisions, countries WHERE first_level_divisions.Country_ID " +
-                    " = countries.Country_ID";
+            String sql = "SELECT * FROM first_level_divisions, countries WHERE " +
+                   " first_level_divisions.Country_ID = countries.Country_ID";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
@@ -63,8 +63,8 @@ public class ImplementDivisions implements DivisionsDAO {
     @Override
     public ObservableList<Divisions> getDivisionCountry(int countryID) {
         try {
-            String sql = "SELECT * FROM first_level_divisions WHERE first_level_divisions.Country_ID " +
-                    " = countries.Country_ID AND first_level_divisions.Country_ID = ?";
+            String sql = "SELECT * FROM first_level_divisions, countries WHERE first_level_divisions.Country_ID " +
+                    " AND first_level_divisions.Country_ID = ? AND countries.Country_ID";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, countryID);
 
@@ -79,6 +79,7 @@ public class ImplementDivisions implements DivisionsDAO {
             }
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
+            e.printStackTrace();
         }
         return divisionsCountry;
     }

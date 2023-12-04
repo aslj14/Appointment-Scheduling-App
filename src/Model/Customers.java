@@ -35,32 +35,26 @@ public class Customers {
     }
 
     public int getCustomerID() {
-
         return customerID;
     }
 
     public void setCustomerID(int customerID) {
-
         this.customerID = customerID;
     }
 
     public String getCustomerName() {
-
         return customerName;
     }
 
     public void setCustomerName(String customerName) {
-
         this.customerName = customerName;
     }
 
     public String getCustomerAddress() {
-
         return customerAddress;
     }
 
     public void setCustomerAddress(String customerAddress) {
-
         this.customerAddress = customerAddress;
     }
 
@@ -73,12 +67,10 @@ public class Customers {
     }
 
     public String getCustomerCountryName() {
-
         return customerCountryName;
     }
 
     public void setCustomerCountryName(String customerCountryName) {
-
         this.customerCountryName = customerCountryName;
     }
 
@@ -88,39 +80,36 @@ public class Customers {
     }
 
     public void setCustomerPostalCode(String customerPostalCode) {
-
         this.customerPostalCode = customerPostalCode;
     }
 
     public String getCustomerPhoneNumber() {
-
         return customerPhoneNumber;
     }
 
     public void setCustomerPhoneNumber(String customerPhoneNumber) {
-
         this.customerPhoneNumber = customerPhoneNumber;
         customerPhoneNumber.toString();
     }
 
     public int getCustomerDivisionID() {
-
         return customerDivisionID;
-
     }
 
     public void setCustomerDivisionID(int customerDivisionID) {
-
         this.customerDivisionID = customerDivisionID;
     }
 
     public String getCustomerDivision(String customerDivision) {
-
         return customerDivision;
     }
 
     public void setCustomerDivision(String customerDivision) {
-
         this.customerDivision = customerDivision;
+    }
+
+    @Override
+    public String toString() {
+        return (Integer.toString(customerID) + customerName);
     }
 }

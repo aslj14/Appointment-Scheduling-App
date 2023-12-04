@@ -11,7 +11,6 @@ public class Contacts {
     public Contacts(int appointmentContactID, String appointmentContactName) {
         this.appointmentContactID = appointmentContactID;
         this.appointmentContactName = appointmentContactName;
-        this.contactEmail = contactEmail;
     }
 
     public int getAppointmentContactID() {
@@ -28,13 +27,5 @@ public class Contacts {
 
     public void setAppointmentContactName(String appointmentContactName) {
         this.appointmentContactName = appointmentContactName;
-    }
-
-    public String getContactEmail() {
-        return contactEmail;
-    }
-
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
     }
 }

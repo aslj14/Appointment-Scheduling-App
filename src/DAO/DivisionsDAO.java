@@ -19,6 +19,4 @@ public interface DivisionsDAO {
 
     public int deleteCurrentDivision(int currentDivisionID, String currentDivision);
 
-
-
 }

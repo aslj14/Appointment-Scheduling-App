@@ -13,6 +13,6 @@ public interface ContactsDAO {
 
     public int deleteContacts(int contactID);
 
-    public int addNewContact (String contactName);
+    public int addNewContact (String newContactName);
 
 };
