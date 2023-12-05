@@ -2,6 +2,7 @@ package Controller;
 
 import DAO.*;
 import Helper.JDBC;
+import Model.Appointments;
 import Model.Contacts;
 import Model.Customers;
 import Model.Users;
@@ -88,8 +89,20 @@ public class AddAppointmentController implements Initializable {
             appointmentContactID = addapptcontact.getSelectionModel().getSelectedItem().getAppointmentContactID();
             appointmentType = addappttype.getText();
             appointmentStartDate = addapptstartdate.getValue();
+            appointmentStartTime = addapptstarttime.getSelectionModel().getSelectedItem();
+            appointmentStartDateTime = LocalDateTime.of(appointmentStartDate.getYear(), appointmentStartDate.getMonth(),
+                    appointmentStartDate.getDayOfMonth(), appointmentStartTime.getHour(), appointmentStartTime.getMinute());
             appointmentEndDate = addapptenddate.getValue();
+            appointmentEndTime = addapptendtime.getSelectionModel().getSelectedItem();
+            appointmentEndDateTime = LocalDateTime.of(appointmentEndDate.getYear(), appointmentEndDate.getMonth(),
+                    appointmentEndDate.getDayOfMonth(), appointmentEndTime.getHour(), appointmentEndTime.getMinute());
+            appointmentCustomerID = addapptcustid.getSelectionModel().getSelectedItem().getCustomerID();
+            appointmentUserID = addapptuserid.getSelectionModel().getSelectedItem().getUserID();
 
+            AppointmentsDAO appointmentsDAO = new ImplementAppointments();
+            appointmentsDAO.addNewAppointment(appointmentID, appointmentTitle, appointmentDesc, appointmentLocation,
+                    appointmentType, appointmentStartDateTime, appointmentEndDateTime, appointmentCustomerID,
+                    appointmentUserID, appointmentContactID);
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainAppointmentScreen.fxml"));
             Scene scene = new Scene(loader.load());
@@ -131,21 +144,19 @@ public class AddAppointmentController implements Initializable {
 
              addapptcontact.setItems(contactsDAO.getAllContacts());
              addapptcontact.getSelectionModel().selectFirst();
+             addapptstartdate.setValue(LocalDate.now());
+             addapptstarttime.setItems(Time.businessHours(systemZoneID, businessZoneID, appointmentStartTime,businessHours));
+             addapptstarttime.getSelectionModel().selectFirst();
+             addapptenddate.setValue(LocalDate.now());
+             addapptendtime.setItems(Time.businessHours(systemZoneID, businessZoneID, LocalTime.of(9, 0), businessHours));
+             addapptendtime.getSelectionModel().selectFirst();
              addapptcustid.setItems(customersDAO.getAllCustomers());
              addapptcustid.getSelectionModel().selectFirst();
              addapptuserid.setItems(usersDAO.getAllUsers());
              addapptuserid.getSelectionModel().selectFirst();
-             addapptstartdate.setValue(LocalDate.now());
-             addapptenddate.setValue(LocalDate.now());
-             addapptstarttime.setItems(Time.businessHours(systemZoneID, businessZoneID, appointmentStartTime,businessHours));
-             addapptstarttime.getSelectionModel().selectFirst();
-             addapptendtime.setItems(Time.businessHours(systemZoneID, businessZoneID, LocalTime.of(9, 0), businessHours));
-             addapptendtime.getSelectionModel().selectFirst();
-
         } catch (Exception e) {
             System.out.println("Error: ");
             e.printStackTrace();
         }
-
     }
 }

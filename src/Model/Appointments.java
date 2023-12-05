@@ -134,7 +134,6 @@ public class Appointments {
     }
 
     public LocalTime getAppointmentEndTime() {
-
         return appointmentEndTime;
     }
 

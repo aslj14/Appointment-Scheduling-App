@@ -12,16 +12,16 @@ public interface AppointmentsDAO {
 
     public Appointments getAppointments(int appointmentsID);
 
+    public int addNewAppointment (int appointmentsID, String appointmentTitle, String appointmentDesc,
+                                  String appointmentLocation, String appointmentType,
+                                  LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
+                                  int appointmentsCustomerID, int appointmentsUserID, int appointmentsContactID);
+
     public int modifyAppointments(int appointmentsID, String appointmentTitle, String appointmentDesc,
                                   String appointmentLocation, String appointmentType,
                                   LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
                                   int appointmentsCustomerID, int appointmentsUserID, int appointmentsContactID);
 
     public int deleteAppointments(int appointmentsID,int appointmentsCustomerID,String appointmentType);
-
-    public int addNewAppointment (int appointmentsID, String appointmentTitle, String appointmentDesc,
-                                  String appointmentLocation, String appointmentType,
-                                  LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
-                                  int appointmentsCustomerID, int appointmentsUserID, int appointmentsContactID);
 
 };
