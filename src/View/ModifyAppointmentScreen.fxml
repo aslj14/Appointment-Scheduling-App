@@ -107,7 +107,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="modapptid" editable="false" GridPane.columnIndex="1">
+                  <TextField fx:id="modapptid" disable="true" editable="false" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>

@@ -4,6 +4,7 @@ import DAO.AppointmentsDAO;
 import DAO.ImplementAppointments;
 import Helper.JDBC;
 import Model.Appointments;
+import Model.Customers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,16 @@ public class MainAppointmentController implements Initializable {
 
     Stage stage;
     Parent scene;
+
+    private static Appointments apptSelected;
+
+    public static Appointments getApptSelected() {
+        return apptSelected;
+    }
+
+    public static void setApptSelected(Appointments theAppt) {
+        apptSelected = theAppt;
+    }
 
     @FXML
     private RadioButton allapptsview;
@@ -132,7 +143,7 @@ public class MainAppointmentController implements Initializable {
                     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ModifyAppointmentScreen.fxml"));
                     Scene scene = new Scene(loader.load());
                     ModifyAppointmentController controller = loader.getController();
-                    controller.modifyAppointment(apptSelected);
+                    controller.setAppointment(apptSelected);
                     stage.setTitle("Appointment Scheduling System");
                     stage.setScene(scene);
                     stage.show();
