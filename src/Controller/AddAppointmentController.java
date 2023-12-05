@@ -5,6 +5,7 @@ import Helper.JDBC;
 import Model.Contacts;
 import Model.Customers;
 import Model.Users;
+import Utility.Time;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -118,7 +118,13 @@ public class AddAppointmentController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Add Appointment works!");
         try {
-             JDBC.openConnection();
+
+            ZoneId systemZoneID = ZoneId.systemDefault();
+            ZoneId businessZoneID = ZoneId.of("America/New_York");
+            LocalTime appointmentStartTime = LocalTime.of(8,  0);
+            int businessHours = 13;
+
+            JDBC.openConnection();
              ContactsDAO contactsDAO = new ImplementContacts();
              CustomersDAO customersDAO = new ImplementCustomers();
              UsersDAO usersDAO = new ImplementUsers();
@@ -131,6 +137,10 @@ public class AddAppointmentController implements Initializable {
              addapptuserid.getSelectionModel().selectFirst();
              addapptstartdate.setValue(LocalDate.now());
              addapptenddate.setValue(LocalDate.now());
+             addapptstarttime.setItems(Time.businessHours(systemZoneID, businessZoneID, appointmentStartTime,businessHours));
+             addapptstarttime.getSelectionModel().selectFirst();
+             addapptendtime.setItems(Time.businessHours(systemZoneID, businessZoneID, LocalTime.of(9, 0), businessHours));
+             addapptendtime.getSelectionModel().selectFirst();
 
         } catch (Exception e) {
             System.out.println("Error: ");

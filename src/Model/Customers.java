@@ -109,6 +109,6 @@ public class Customers {
 
     @Override
     public String toString() {
-        return ("[" + Integer.toString(customerID) + "]" + customerName);
+        return ("[" + Integer.toString(customerID) + "]: " + customerName);
     }
 }

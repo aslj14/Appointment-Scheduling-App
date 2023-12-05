@@ -28,4 +28,9 @@ public class Contacts {
     public void setAppointmentContactName(String appointmentContactName) {
         this.appointmentContactName = appointmentContactName;
     }
+
+    @Override
+    public String toString() {
+        return appointmentContactName;
+    }
 }

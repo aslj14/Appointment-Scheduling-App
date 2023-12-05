@@ -37,4 +37,9 @@ public class Users {
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
+    @Override
+    public String toString() {
+        return ("[" + Integer.toString(userID) + "]: " + userName);
+    }
 }
