@@ -64,11 +64,34 @@ public class ModifyCustomerController implements Initializable {
     }
 
     public void setCustomer(Customers customerSelected) {
+        JDBC.openConnection();
+        CountriesDAO countriesDAO = new ImplementCountries();
+
         modcustname.setText(customerSelected.getCustomerName());
         modcustaddress.setText(customerSelected.getCustomerAddress());
-        modcustcountry.getSelectionModel().select(customerSelected.getCustomerCountryID());
         modcustpostalcode.setText(customerSelected.getCustomerPostalCode());
         modcustphonenumber.setText(customerSelected.getCustomerPhoneNumber());
+
+        Countries countrySelected = null;
+        for(Countries countries : countriesDAO.getAllCountries()) {
+            if(countries.getCountryID() == customerSelected.getCustomerCountryID()) {
+                countrySelected = countries;
+                break;
+            }
+        }
+        modcustcountry.getSelectionModel().select(countrySelected);
+        modCountryID = countrySelected.getCountryID();
+
+        modcuststateprovince.setItems(Lists.getProcessedDivisions(modCountryID));
+        Divisions divisionsSelected = null;
+        for(Divisions divisions : Lists.getProcessedDivisions(modCountryID)) {
+            if(divisions.getDivisionID() == customerSelected.getCustomerDivisionID()) {
+                divisionsSelected = divisions;
+                break;
+            }
+        }
+        modcuststateprovince.getSelectionModel().select(divisionsSelected);
+        modDivisionID = divisionsSelected.getDivisionID();
     }
 
     @FXML
