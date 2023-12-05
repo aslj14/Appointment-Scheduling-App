@@ -91,6 +91,32 @@ public class ImplementAppointments implements AppointmentsDAO {
     }
 
     @Override
+    public int addNewAppointment(String appointmentTitle, String appointmentDesc,
+                                 String appointmentLocation, String appointmentType,
+                                 LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
+                                 int appointmentsCustomerID, int appointmentsUserID, int appointmentsContactID) {
+        int affectedRows = 0;
+        try {
+            String sql = "INSERT INTO appointments (Title, Description, Location," +
+                    "Type, Start, End, Customer_ID, User_ID, Contact_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, appointmentTitle);
+            ps.setString(2, appointmentDesc);
+            ps.setString(3, appointmentLocation);
+            ps.setString(4, appointmentType);
+            ps.setTimestamp(5, Timestamp.valueOf(appointmentStartDateTime));
+            ps.setTimestamp(6, Timestamp.valueOf(appointmentEndDateTime));
+            ps.setInt(7, appointmentsCustomerID);
+            ps.setInt(8, appointmentsUserID);
+            ps.setInt(9, appointmentsContactID);
+            affectedRows = ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+        return 0;
+    }
+
+    @Override
     public int modifyAppointments(int appointmentsID, String appointmentTitle, String appointmentDesc,
                                   String appointmentLocation, String appointmentType,
                                   LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
@@ -127,32 +153,6 @@ public class ImplementAppointments implements AppointmentsDAO {
             ps.setString(1, appointmentsType);
             int rowsAffected = ps.executeUpdate();
             return rowsAffected;
-        } catch (Exception e) {
-            System.out.println("Error:" + e.getMessage());
-        }
-        return 0;
-    }
-
-    @Override
-    public int addNewAppointment(int appointmentsID, String appointmentTitle, String appointmentDesc,
-                                 String appointmentLocation, String appointmentType,
-                                 LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
-                                 int appointmentsCustomerID, int appointmentsUserID, int appointmentsContactID) {
-        try {
-            String sql = "INSERT INTO appointments (Appointment_ID = ?, Title = ?. Description = ?, Location = ?," +
-                    "Type = ?, Start = ?, End = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ?";
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, appointmentsID);
-            ps.setString(2, appointmentTitle);
-            ps.setString(3, appointmentDesc);
-            ps.setString(4, appointmentLocation);
-            ps.setString(5, appointmentType);
-            ps.setTimestamp(6, Timestamp.valueOf(appointmentStartDateTime));
-            ps.setTimestamp(7, Timestamp.valueOf(appointmentEndDateTime));
-            ps.setInt(8, appointmentsCustomerID);
-            ps.setInt(9, appointmentsUserID);
-            ps.setInt(10, appointmentsContactID);
-
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
         }

@@ -64,7 +64,7 @@ public class AddCustomerController implements Initializable {
     }
 
     @FXML
-    void onActionSaveNewCustomer(ActionEvent event) throws SQLException {
+    void onActionSaveNewCustomer(ActionEvent event) throws IOException {
         try {
             String customerName = addcustname.getText();
             addcustname.setText(customerName);

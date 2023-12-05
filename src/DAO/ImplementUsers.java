@@ -25,6 +25,7 @@ public class ImplementUsers implements UsersDAO {
                 String userName = rs.getString("User_Name");
                 String userPassword = rs.getString("Password");
                 Users users = new Users(userID, userName, userPassword);
+                allUsers.add(users);
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

@@ -100,7 +100,7 @@ public class AddAppointmentController implements Initializable {
             appointmentUserID = addapptuserid.getSelectionModel().getSelectedItem().getUserID();
 
             AppointmentsDAO appointmentsDAO = new ImplementAppointments();
-            appointmentsDAO.addNewAppointment(appointmentID, appointmentTitle, appointmentDesc, appointmentLocation,
+            appointmentsDAO.addNewAppointment(appointmentTitle, appointmentDesc, appointmentLocation,
                     appointmentType, appointmentStartDateTime, appointmentEndDateTime, appointmentCustomerID,
                     appointmentUserID, appointmentContactID);
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -137,7 +137,7 @@ public class AddAppointmentController implements Initializable {
             LocalTime appointmentStartTime = LocalTime.of(8,  0);
             int businessHours = 13;
 
-            JDBC.openConnection();
+             JDBC.openConnection();
              ContactsDAO contactsDAO = new ImplementContacts();
              CustomersDAO customersDAO = new ImplementCustomers();
              UsersDAO usersDAO = new ImplementUsers();

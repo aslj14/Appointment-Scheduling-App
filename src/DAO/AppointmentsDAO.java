@@ -12,7 +12,7 @@ public interface AppointmentsDAO {
 
     public Appointments getAppointments(int appointmentsID);
 
-    public int addNewAppointment (int appointmentsID, String appointmentTitle, String appointmentDesc,
+    public int addNewAppointment (String appointmentTitle, String appointmentDesc,
                                   String appointmentLocation, String appointmentType,
                                   LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
                                   int appointmentsCustomerID, int appointmentsUserID, int appointmentsContactID);
