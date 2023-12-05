@@ -137,7 +137,7 @@ public class ImplementCustomers implements CustomersDAO {
     public int deleteCustomer(int appointmentCustomerID, String appointmentCustomerName) {
         int affectedRows = 0;
         try {
-            String sql = "DELETE FROM customers WHERE Customer_ID = ?, AND Customer_Name = ?";
+            String sql = "DELETE FROM customers WHERE Customer_ID = ? AND Customer_Name = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, appointmentCustomerID);
             ps.setString(2, appointmentCustomerName);

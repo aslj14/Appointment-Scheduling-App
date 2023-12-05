@@ -87,7 +87,14 @@ public class MainCustomerController implements Initializable {
 
     @FXML
     void onActionDeleteCustomer(ActionEvent event) {
+        JDBC.openConnection();
+        CustomersDAO customersDAO = new ImplementCustomers();
+        Customers chosenCustomer = maincusttableview.getSelectionModel().getSelectedItem();
+        int customerID = chosenCustomer.getCustomerID();
+        String customerName = chosenCustomer.getCustomerName();
 
+        customersDAO.deleteCustomer(customerID,customerName);
+        maincusttableview.setItems(customersDAO.getAllCustomers());
     }
 
     @FXML
