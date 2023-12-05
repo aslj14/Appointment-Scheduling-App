@@ -105,19 +105,20 @@ public class ImplementCustomers implements CustomersDAO {
     }
 
     @Override
-    public int modifyCustomer(String appointmentCustomerName, String appointmentCustomerAddress,
+    public int modifyCustomer(int appointmentCustomerID, String appointmentCustomerName, String appointmentCustomerAddress,
                               String appointmentCustomerPostalCode, String appointmentCustomerPhoneNumber,
                               int appointmentCustomerDivisionID) {
         int affectedRows = 0;
         try {
             String sql = "UPDATE customers SET Customer_Name = ?, Address = ?, Postal_Code = ?, Phone = ?, " +
-                    " Division_ID = ?, WHERE Customer_ID = ?";
+                    " Division_ID = ? WHERE Customer_ID = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, appointmentCustomerName);
             ps.setString(2, appointmentCustomerAddress);
             ps.setString(3, appointmentCustomerPostalCode);
             ps.setString(4, appointmentCustomerPhoneNumber);
             ps.setInt(5, appointmentCustomerDivisionID);
+            ps.setInt(6, appointmentCustomerID);
             affectedRows = ps.executeUpdate();
 
             if (affectedRows > 0) {
@@ -127,6 +128,7 @@ public class ImplementCustomers implements CustomersDAO {
             }
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
+            e.printStackTrace();
         }
         return affectedRows;
     }

@@ -2,7 +2,9 @@ package Controller;
 
 import DAO.CountriesDAO;
 
+import DAO.CustomersDAO;
 import DAO.ImplementCountries;
+import DAO.ImplementCustomers;
 import Helper.JDBC;
 import Model.Countries;
 import Model.Customers;
@@ -29,7 +31,7 @@ public class ModifyCustomerController implements Initializable {
     Parent scene;
 
 
-    Customers customerSelected;
+    Customers customerSelected = null;
 
     private int modCountryID;
 
@@ -56,16 +58,11 @@ public class ModifyCustomerController implements Initializable {
     @FXML
     private ComboBox<Divisions> modcuststateprovince;
 
-    @FXML
-    void onActionDisplayModStateProvince(ActionEvent event) {
-        modCountryID = modcustcountry.getValue().getCountryID();
-        modcuststateprovince.setItems(Lists.getProcessedDivisions(modCountryID));
-        modcuststateprovince.getSelectionModel().selectFirst();
-    }
-
-    public void setCustomer(Customers customerSelected) {
+    public void setCustomer(Customers theCustomer) {
         JDBC.openConnection();
         CountriesDAO countriesDAO = new ImplementCountries();
+
+        customerSelected = theCustomer;
 
         modcustname.setText(customerSelected.getCustomerName());
         modcustaddress.setText(customerSelected.getCustomerAddress());
@@ -96,8 +93,35 @@ public class ModifyCustomerController implements Initializable {
 
     @FXML
     void onActionModifyCustomer(ActionEvent event) throws IOException {
+        try {
+            int customerID = customerSelected.getCustomerID();
+            String customerName = modcustname.getText();
+            String customerAddress = modcustaddress.getText();
+            String customerPostalCode = modcustpostalcode.getText();
+            String customerPhoneNumber = modcustphonenumber.getText();
+            int divisionCountryID = modcuststateprovince.getSelectionModel().getSelectedItem().getDivisionID();
 
+            CustomersDAO customersDAO = new ImplementCustomers();
+            customersDAO.modifyCustomer(customerID, customerName, customerAddress, customerPostalCode, customerPhoneNumber,
+                    divisionCountryID);
 
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainCustomerScreen.fxml"));
+            Scene scene = new Scene(loader.load());
+            stage.setTitle("Appointment Scheduling System");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Error: ");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void onActionSelectModCountry(ActionEvent event) {
+        modCountryID = modcustcountry.getValue().getCountryID();
+        modcuststateprovince.setItems(Lists.getProcessedDivisions(modCountryID));
+        modcuststateprovince.getSelectionModel().selectFirst();
     }
 
     @FXML

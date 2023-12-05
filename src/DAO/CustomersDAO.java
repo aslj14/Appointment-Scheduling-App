@@ -13,7 +13,7 @@ public interface CustomersDAO {
                                String appointmentCustomerPostalCode, String appointmentCustomerPhoneNumber,
                                int appointmentCustomerDivisionID);
 
-    public int modifyCustomer(String appointmentCustomerName, String appointmentCustomerAddress,
+    public int modifyCustomer(int appointmentCustomerID, String appointmentCustomerName, String appointmentCustomerAddress,
                               String appointmentCustomerPostalCode, String appointmentCustomerPhoneNumber,
                               int appointmentCustomerDivisionID);
     public int deleteCustomer(int appointmentCustomerID, String appointmentCustomerName);

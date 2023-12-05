@@ -82,8 +82,8 @@
                      </font></TextField>
                   <TextField fx:id="modcustname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="modcustaddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ComboBox fx:id="modcuststateprovince" onAction="#onActionDisplayModStateProvince" prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ComboBox fx:id="modcustcountry" prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="modcuststateprovince" prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="modcustcountry" onAction="#onActionSelectModCountry" prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <TextField fx:id="modcustpostalcode" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <TextField fx:id="modcustphonenumber" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>

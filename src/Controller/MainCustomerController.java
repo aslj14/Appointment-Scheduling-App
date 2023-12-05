@@ -1,11 +1,11 @@
 package Controller;
 
-import DAO.AppointmentsDAO;
 import DAO.CustomersDAO;
-import DAO.ImplementAppointments;
 import DAO.ImplementCustomers;
 import Helper.JDBC;
 import Model.Customers;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

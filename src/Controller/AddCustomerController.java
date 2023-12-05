@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AddCustomerController implements Initializable {
@@ -63,9 +64,10 @@ public class AddCustomerController implements Initializable {
     }
 
     @FXML
-    void onActionSaveNewCustomer(ActionEvent event) throws IOException {
+    void onActionSaveNewCustomer(ActionEvent event) throws SQLException {
         try {
             String customerName = addcustname.getText();
+            addcustname.setText(customerName);
             String customerAddress = addcustaddress.getText();
             String customerPostalCode = addcustpotalcode.getText();
             String customerPhoneNumber = addcustphonenumber.getText();
