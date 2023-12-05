@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifyCustomerController">
    <children>
       <HBox layoutX="43.0" layoutY="32.0" prefHeight="57.0" prefWidth="200.0">
          <children>
@@ -76,28 +76,28 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField disable="true" promptText="Auto-Generated" GridPane.columnIndex="1">
+                  <TextField fx:id="modcustid" disable="true" promptText="Auto-Generated" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font></TextField>
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <ComboBox prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <ComboBox prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="modcustname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="modcustaddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="modcuststateprovince" onAction="#onActionDisplayModStateProvince" prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="modcustcountry" prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="modcustpostalcode" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="modcustphonenumber" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
             </GridPane>
          </children>
       </VBox>
       <HBox layoutX="243.0" layoutY="438.0" prefHeight="30.0" prefWidth="248.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Save">
+            <Button mnemonicParsing="false" onAction="#onActionModifyCustomer" prefHeight="25.0" prefWidth="136.0" text="Save">
                <HBox.margin>
                   <Insets right="60.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#onActionShowMainCustomers" prefHeight="25.0" prefWidth="136.0" text="Cancel" />
          </children>
       </HBox>
    </children>

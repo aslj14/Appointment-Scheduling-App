@@ -8,8 +8,6 @@ import Helper.JDBC;
 import Model.Countries;
 import Model.Divisions;
 import Utility.Lists;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,19 +16,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddCustomerController implements Initializable {
 
     Stage stage;
     Parent scene;
+
+    private int countryID;
 
     @FXML
     private TextField addcustaddress;
@@ -53,7 +51,6 @@ public class AddCustomerController implements Initializable {
     @FXML
     private ComboBox<Divisions> addcuststateprovince;
 
-    private int countryID;
 
     @FXML
     void onActionDisplayMainCustomers(ActionEvent event) throws IOException {

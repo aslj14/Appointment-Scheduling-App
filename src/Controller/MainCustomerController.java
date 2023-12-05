@@ -26,6 +26,16 @@ public class MainCustomerController implements Initializable {
     Stage stage;
     Parent scene;
 
+    private static Customers customerSelected;
+
+    public static Customers getCustomerSelected() {
+        return customerSelected;
+    }
+
+    public static void setCustomerSelected(Customers theCustomer) {
+        customerSelected = theCustomer;
+    }
+
     @FXML
     private TableColumn maincustaddresscol;
 
@@ -107,12 +117,15 @@ public class MainCustomerController implements Initializable {
 
     @FXML
     void onActionModifyCustomer(ActionEvent event) throws IOException {
-            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ModifyCustomerScreen.fxml"));
-            Scene scene = new Scene(loader.load());
-            stage.setTitle("Appointment Scheduling System");
-            stage.setScene(scene);
-            stage.show();
+                Customers customerSelected = maincusttableview.getSelectionModel().getSelectedItem();
+                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ModifyCustomerScreen.fxml"));
+                Scene scene = new Scene(loader.load());
+                ModifyCustomerController controller = loader.getController();
+                controller.setCustomer(customerSelected);
+                stage.setTitle("Appointment Scheduling System");
+                stage.setScene(scene);
+                stage.show();
     }
 
     @FXML
@@ -131,6 +144,8 @@ public class MainCustomerController implements Initializable {
         maincustidcol.setCellValueFactory(new PropertyValueFactory<>("customerID"));
         maincustnamecol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         maincustaddresscol.setCellValueFactory(new PropertyValueFactory<>("customerAddress"));
+        maincuststatecol.setCellValueFactory(new PropertyValueFactory<>("customerDivision"));
+        maincustcountrycol.setCellValueFactory(new PropertyValueFactory<>("customerCountryName"));
         maincustpostalcodecol.setCellValueFactory(new PropertyValueFactory<>("customerPostalCode"));
         maincustphonenumbercol.setCellValueFactory(new PropertyValueFactory<>("customerPhoneNumber"));
     }

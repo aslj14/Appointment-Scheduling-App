@@ -58,7 +58,7 @@ public class Customers {
         this.customerAddress = customerAddress;
     }
 
-    public int getCustomerCountryID(int customerCountryID) {
+    public int getCustomerCountryID() {
         return customerCountryID;
     }
 
@@ -75,7 +75,6 @@ public class Customers {
     }
 
     public String getCustomerPostalCode() {
-
         return customerPostalCode;
     }
 
@@ -100,7 +99,7 @@ public class Customers {
         this.customerDivisionID = customerDivisionID;
     }
 
-    public String getCustomerDivision(String customerDivision) {
+    public String getCustomerDivision() {
         return customerDivision;
     }
 
@@ -110,6 +109,6 @@ public class Customers {
 
     @Override
     public String toString() {
-        return (Integer.toString(customerID) + customerName);
+        return ("[" + Integer.toString(customerID) + "]" + customerName);
     }
 }
