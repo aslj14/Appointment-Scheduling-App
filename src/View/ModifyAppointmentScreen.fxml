@@ -107,11 +107,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="modapptid" disable="true" editable="false" GridPane.columnIndex="1">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font>
-                  </TextField>
+                  <TextField fx:id="modapptid" disable="true" editable="false" GridPane.columnIndex="1" />
                   <TextField fx:id="modappttitle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="modapptdesc" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="modapptlocation" GridPane.columnIndex="1" GridPane.rowIndex="3" />

@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
@@ -68,6 +70,22 @@ public class ModifyAppointmentController implements Initializable {
     @FXML
     private ComboBox<Users> modapptuserid;
 
+    private int appointmentID;
+    private String appointmentTitle;
+    private String appointmentDesc;
+    private String appointmentLocation;
+    private String appointmentType;
+    private LocalDateTime appointmentStartDateTime;
+    private LocalDate appointmentStartDate;
+    private LocalTime appointmentStartTime;
+    private LocalDateTime appointmentEndDateTime;
+    private LocalDate appointmentEndDate;
+    private LocalTime appointmentEndTime;
+    private int appointmentCustomerID;
+    private int appointmentUserID;
+    private int appointmentContactID;
+
+
     public void setAppointment(Appointments theAppt) {
         JDBC.openConnection();
         ContactsDAO contactsDAO = new ImplementContacts();
@@ -76,6 +94,7 @@ public class ModifyAppointmentController implements Initializable {
 
         apptSelected = theAppt;
 
+        modapptid.setText(Integer.toString(apptSelected.getAppointmentID()));
         modappttitle.setText(apptSelected.getAppointmentTitle());
         modapptdesc.setText(apptSelected.getAppointmentDesc());
         modapptlocation.setText(apptSelected.getAppointmentLocation());
@@ -88,7 +107,7 @@ public class ModifyAppointmentController implements Initializable {
                 break;
             }
         }
-        modapptcontact.getSelectionModel().getSelectedItem();
+        modapptcontact.getSelectionModel().select(contactSelected);
 
         Customers customerSelected = null;
         for (Customers customers : customersDAO.getAllCustomers()) {
@@ -114,13 +133,6 @@ public class ModifyAppointmentController implements Initializable {
         modapptendtime.getSelectionModel().select(apptSelected.getAppointmentEndTime());
     }
 
-
-    public void modifyAppointment(Appointments apptSelected) {
-        JDBC.openConnection();
-        ContactsDAO contactsDAO = new ImplementContacts();
-        CustomersDAO customersDAO = new ImplementCustomers();
-    }
-
     @FXML
     void onActionDisplayMainAppt(ActionEvent event) throws IOException {
         stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -133,7 +145,38 @@ public class ModifyAppointmentController implements Initializable {
 
     @FXML
     void onActionModAppt(ActionEvent event) {
-        System.exit(0);
+        try {
+            appointmentID = apptSelected.getAppointmentID();
+            appointmentTitle = modappttitle.getText();
+            appointmentDesc = modapptdesc.getText();
+            appointmentLocation = modapptlocation.getText();
+            appointmentContactID = modapptcontact.getSelectionModel().getSelectedItem().getAppointmentContactID();
+            appointmentType = modappttype.getText();
+            appointmentStartDate = modapptstartdate.getValue();
+            appointmentStartTime = modapptstarttime.getSelectionModel().getSelectedItem();
+            appointmentStartDateTime = LocalDateTime.of(appointmentStartDate.getYear(), appointmentStartDate.getMonth(),
+                    appointmentStartDate.getDayOfMonth(), appointmentStartTime.getHour(), appointmentStartTime.getMinute());
+            appointmentEndDate = modapptenddate.getValue();
+            appointmentEndTime = modapptendtime.getSelectionModel().getSelectedItem();
+            appointmentEndDateTime = LocalDateTime.of(appointmentEndDate.getYear(), appointmentEndDate.getMonth(),
+                    appointmentEndDate.getDayOfMonth(), appointmentEndTime.getHour(), appointmentEndTime.getMinute());
+            appointmentCustomerID = modapptcustid.getSelectionModel().getSelectedItem().getCustomerID();
+            appointmentUserID = modapptuserid.getSelectionModel().getSelectedItem().getUserID();
+
+            AppointmentsDAO appointmentsDAO = new ImplementAppointments();
+            appointmentsDAO.modifyAppointments(appointmentID, appointmentTitle, appointmentDesc, appointmentLocation,
+                    appointmentType, appointmentStartDateTime, appointmentEndDateTime, appointmentCustomerID,
+                    appointmentUserID, appointmentContactID);
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainAppointmentScreen.fxml"));
+            Scene scene = new Scene(loader.load());
+            stage.setTitle("Appointment Scheduling System");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("Error: ");
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -76,12 +76,10 @@ public class Appointments {
     }
 
     public void setAppointmentLocation(String appointmentLocation) {
-
         this.appointmentLocation = appointmentLocation;
     }
 
     public String getAppointmentType() {
-
         return appointmentType;
     }
 
@@ -107,7 +105,6 @@ public class Appointments {
     }
 
     public LocalTime getAppointmentStartTime() {
-
         return appointmentStartTime;
     }
 
@@ -116,7 +113,6 @@ public class Appointments {
     }
 
     public LocalDateTime getAppointmentEndDateTime() {
-
         return appointmentEndDateTime;
     }
 
@@ -143,7 +139,6 @@ public class Appointments {
 
 
     public int getAppointmentCustomerID() {
-
         return appointmentCustomerID;
     }
 
@@ -152,22 +147,23 @@ public class Appointments {
     }
 
     public int getAppointmentUserID() {
-
         return appointmentUserID;
     }
 
     public void setAppointmentUserID(int appointmentUserID) {
-
         this.appointmentUserID = appointmentCustomerID;
     }
 
     public int getAppointmentContactID() {
-
         return appointmentContactID;
     }
 
     public void setAppointmentContactID(int appointmentContactID) {
-
         this.appointmentContactID = appointmentContactID;
+    }
+
+    @Override
+    public String toString() {
+        return Integer.toString(appointmentContactID);
     }
 }

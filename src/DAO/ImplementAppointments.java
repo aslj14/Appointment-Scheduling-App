@@ -117,14 +117,14 @@ public class ImplementAppointments implements AppointmentsDAO {
     }
 
     @Override
-    public int modifyAppointments(String appointmentTitle, String appointmentDesc,
+    public int modifyAppointments(int appointmentID, String appointmentTitle, String appointmentDesc,
                                   String appointmentLocation, String appointmentType,
                                   LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
                                   int appointmentsCustomerID, int appointmentsUserID, int appointmentsContactID) {
         int affectedRows = 0;
         try {
-            String sql = "UPDATE appointments SET Title = ?, Description = ?, Location = ?, +" +
-                    "Type = ?, Start = ?, End = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ?";
+            String sql = "UPDATE appointments SET Title = ?, Description = ?, Location = ?, " +
+                    "Type = ?, Start = ?, End = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? WHERE Appointment_ID = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, appointmentTitle);
             ps.setString(2, appointmentDesc);
@@ -135,6 +135,7 @@ public class ImplementAppointments implements AppointmentsDAO {
             ps.setInt(7, appointmentsCustomerID);
             ps.setInt(8, appointmentsUserID);
             ps.setInt(9, appointmentsContactID);
+            ps.setInt(10, appointmentID);
             affectedRows = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
@@ -144,17 +145,17 @@ public class ImplementAppointments implements AppointmentsDAO {
 
     @Override
     public int deleteAppointments(int appointmentsID, int appointmentsCustomerID, String appointmentsType) {
+        int affectedRows = 0;
         try {
-            String sql = "DELETE FROM appointments WHERE Appointment_ID = ?, Customer_ID = ?, Type = ?";
+            String sql = "DELETE FROM appointments WHERE Appointment_ID = ? AND Customer_ID = ? AND Type = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, appointmentsID);
             ps.setInt(2, appointmentsCustomerID);
-            ps.setString(1, appointmentsType);
-            int rowsAffected = ps.executeUpdate();
-            return rowsAffected;
+            ps.setString(3, appointmentsType);
+            affectedRows = ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error:" + e.getMessage());
         }
-        return 0;
+        return affectedRows;
     }
 }

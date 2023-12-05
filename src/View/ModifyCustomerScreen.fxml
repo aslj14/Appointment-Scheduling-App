@@ -76,10 +76,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="modcustid" disable="true" GridPane.columnIndex="1">
-                     <font>
-                        <Font name="System Italic" size="12.0" />
-                     </font></TextField>
+                  <TextField fx:id="modcustid" disable="true" GridPane.columnIndex="1" />
                   <TextField fx:id="modcustname" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="modcustaddress" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <ComboBox fx:id="modcuststateprovince" prefHeight="25.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />

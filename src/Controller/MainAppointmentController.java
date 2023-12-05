@@ -101,7 +101,15 @@ public class MainAppointmentController implements Initializable {
 
     @FXML
     void onActionDeleteAppt(ActionEvent event) {
+        JDBC.openConnection();
+        AppointmentsDAO appointmentsDAO = new ImplementAppointments();
+        Appointments apptSelected = mainapptstableview.getSelectionModel().getSelectedItem();
+        int appointmentsID = apptSelected.getAppointmentID();
+        int appointmentCustID = apptSelected.getAppointmentCustomerID();
+        String appointmentType = apptSelected.getAppointmentType();
 
+        appointmentsDAO.deleteAppointments(appointmentsID, appointmentCustID, appointmentType);
+        mainapptstableview.setItems(appointmentsDAO.getAllAppointments());
     }
 
     @FXML
@@ -126,7 +134,6 @@ public class MainAppointmentController implements Initializable {
 
     @FXML
     void onActionLogoutMainApptScreen(ActionEvent event) {
-
         System.exit(0);
     }
 
@@ -171,9 +178,7 @@ public class MainAppointmentController implements Initializable {
         mainapptsendtimecol.setCellValueFactory(new PropertyValueFactory<>("appointmentEndTime"));
         mainapptscustomeridcol.setCellValueFactory(new PropertyValueFactory<>("appointmentCustomerID"));
         mainapptsuseridcol.setCellValueFactory(new PropertyValueFactory<>("appointmentUserID"));
-
-
-
+        mainapptscontactcol.setCellValueFactory(new PropertyValueFactory<>("appointmentContactID"));
     }
 }
 

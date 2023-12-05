@@ -17,7 +17,7 @@ public interface AppointmentsDAO {
                                   LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
                                   int appointmentsCustomerID, int appointmentsUserID, int appointmentsContactID);
 
-    public int modifyAppointments(String appointmentTitle, String appointmentDesc,
+    public int modifyAppointments(int appointmentID, String appointmentTitle, String appointmentDesc,
                                   String appointmentLocation, String appointmentType,
                                   LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,
                                   int appointmentsCustomerID, int appointmentsUserID, int appointmentsContactID);
