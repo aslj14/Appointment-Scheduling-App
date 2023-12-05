@@ -64,6 +64,7 @@ public class ModifyCustomerController implements Initializable {
 
         customerSelected = theCustomer;
 
+        modcustid.setText(Integer.toString(customerSelected.getCustomerID()));
         modcustname.setText(customerSelected.getCustomerName());
         modcustaddress.setText(customerSelected.getCustomerAddress());
         modcustpostalcode.setText(customerSelected.getCustomerPostalCode());

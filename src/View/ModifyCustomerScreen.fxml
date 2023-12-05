@@ -76,7 +76,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="modcustid" disable="true" promptText="Auto-Generated" GridPane.columnIndex="1">
+                  <TextField fx:id="modcustid" disable="true" GridPane.columnIndex="1">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font></TextField>
