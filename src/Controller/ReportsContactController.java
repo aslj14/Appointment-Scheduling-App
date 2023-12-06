@@ -119,7 +119,7 @@ public class ReportsContactController implements Initializable {
     @FXML
     void onActionOpenReportsMonthType(ActionEvent event) throws IOException {
             stage = (Stage) ((RadioButton) event.getSource()).getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ReportMonthScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ReportsMonthScreen.fxml"));
             Scene scene = new Scene(loader.load());
             stage.setTitle("Appointment Scheduling System");
             stage.setScene(scene);
