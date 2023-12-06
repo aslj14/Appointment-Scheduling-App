@@ -3,18 +3,20 @@ package DAO;
 import Model.Appointments;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.scene.control.Alert;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 
 import static Helper.JDBC.connection;
 public class ImplementAppointments implements AppointmentsDAO {
 
     ObservableList<Appointments> allAppointments = FXCollections.observableArrayList();
+
+    public boolean foundAppointment;
 
     @Override
     public ObservableList<Appointments> getAllAppointments() {
@@ -38,11 +40,11 @@ public class ImplementAppointments implements AppointmentsDAO {
                 int appointmentsCustomerID = rs.getInt("Customer_ID");
                 int appointmentsUserID = rs.getInt("User_ID");
                 int appointmentsContactID = rs.getInt("Contact_ID");
-                Appointments appointments = new Appointments(appointmentID, appointmentTitle,appointmentDesc,
-                                            appointmentLocation, appointmentType, appointmentStartDateTime,
-                                            appointmentsStartDate, appointmentStartTime, appointmentEndDateTime,
-                                            appointmentEndDate, appointmentEndTime, appointmentsCustomerID,
-                                            appointmentsUserID, appointmentsContactID);
+                Appointments appointments = new Appointments(appointmentID, appointmentTitle, appointmentDesc,
+                        appointmentLocation, appointmentType, appointmentStartDateTime,
+                        appointmentsStartDate, appointmentStartTime, appointmentEndDateTime,
+                        appointmentEndDate, appointmentEndTime, appointmentsCustomerID,
+                        appointmentsUserID, appointmentsContactID);
                 allAppointments.add(appointments);
             }
             return allAppointments;
@@ -77,7 +79,7 @@ public class ImplementAppointments implements AppointmentsDAO {
                 int appointmentsCustomerID = rs.getInt("Customer_ID");
                 int appointmentsUserID = rs.getInt("User_ID");
                 int appointmentsContactID = rs.getInt("Contact_ID");
-                Appointments appointments = new Appointments(appointmentID, appointmentTitle,appointmentDesc,
+                Appointments appointments = new Appointments(appointmentID, appointmentTitle, appointmentDesc,
                         appointmentLocation, appointmentType, appointmentStartDateTime,
                         appointmentsStartDate, appointmentStartTime, appointmentEndDateTime,
                         appointmentEndDate, appointmentEndTime, appointmentsCustomerID,
@@ -157,5 +159,126 @@ public class ImplementAppointments implements AppointmentsDAO {
             System.out.println("Error:" + e.getMessage());
         }
         return affectedRows;
+    }
+
+    @Override
+    public ObservableList<Appointments> findAppts(LocalDate dateSelected) {
+        ObservableList<Appointments> filteredAppointments = FXCollections.observableArrayList();
+        foundAppointment = false;
+
+        for (Appointments appointments : allAppointments) {
+            if (appointments.getAppointmentStartDate().equals(dateSelected)) {
+                filteredAppointments.add(appointments);
+            }
+        }
+        if (filteredAppointments.isEmpty()) {
+            return allAppointments;
+        }
+        foundAppointment = true;
+        return filteredAppointments;
+    }
+
+    @Override
+    public void nearingAppointmentsAlert(LocalDateTime localDT) {
+        try {
+            ObservableList<Appointments> nearingAppointments = FXCollections.observableArrayList();
+            ObservableList<Appointments> allTheAppointments = FXCollections.observableArrayList();
+            AppointmentsDAO appointmentsDAO = new ImplementAppointments();
+            allTheAppointments = appointmentsDAO.getAllAppointments();
+
+            ZoneId zoneID = ZoneId.systemDefault();
+            ZonedDateTime loginZoneDT = localDT.atZone(zoneID);
+            LocalDateTime appointmentStartDT = localDT.plusMinutes(15);
+
+            for (Appointments appointment : allTheAppointments) {
+                ZonedDateTime zonedAppointment = ZonedDateTime.from(appointment.getAppointmentStartDateTime().atZone(zoneID));
+                if (zonedAppointment.isAfter(loginZoneDT) && zonedAppointment.isBefore(appointmentStartDT.atZone(zoneID))) {
+                    nearingAppointments.add(appointment);
+                    System.out.println("There is an upcoming appointment at: "  + appointment);
+                }
+            }
+
+            if (nearingAppointments.size() == 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Upcoming Appointments");
+                alert.setContentText("There are no upcoming appointments in the next 15 minutes!");
+                alert.showAndWait();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Upcoming Appointments");
+                alert.setHeaderText("Appointments beginning in the next 15 minutes: ");
+                String textForAlert = "";
+
+                for (Appointments nearAppointment : nearingAppointments) {
+                    textForAlert = ("Appointment: " + nearAppointment.getAppointmentID() + " at " + nearAppointment.getAppointmentStartTime() +
+                          " " + nearAppointment.getAppointmentStartDate() + "\n") + textForAlert;
+                }
+                alert.setContentText(textForAlert);
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            System.out.println("Error: ");
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public FilteredList<Appointments> viewApptsByWeek(LocalDate loginByDate) {
+        try {
+            ObservableList<Appointments> allTheAppointments = FXCollections.observableArrayList();
+            allTheAppointments = getAllAppointments();
+            FilteredList<Appointments> filteredAppointments = new FilteredList<>(allTheAppointments);
+
+            filteredAppointments.setPredicate(appointment -> {
+                LocalDate dateOfAppt = appointment.getAppointmentStartDate();
+
+                return ((dateOfAppt.isEqual(loginByDate) || dateOfAppt.isAfter(loginByDate)) &&
+                        dateOfAppt.isBefore(loginByDate.plusDays(7)));
+            });
+            return filteredAppointments;
+        } catch (Exception e) {
+            System.out.println("Error: ");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public FilteredList<Appointments> viewApptsByMonth(LocalDate loginByDate) {
+        ObservableList<Appointments> allTheAppointments = FXCollections.observableArrayList();
+        allTheAppointments = getAllAppointments();
+        FilteredList<Appointments> filteredAppointments = new FilteredList<>(allTheAppointments);
+
+        filteredAppointments.setPredicate(appointment -> {
+            LocalDate dateOfAppt = appointment.getAppointmentStartDate();
+
+            return (dateOfAppt.isEqual(loginByDate) || dateOfAppt.isAfter(loginByDate)) &&
+                    dateOfAppt.getMonth().equals(loginByDate.getMonth());
+        });
+        return filteredAppointments;
+    }
+
+    @Override
+    public boolean getAppointmentStartTime(LocalDateTime appointmentST) {
+        ZonedDateTime zoneForAppt = appointmentST.atZone(ZoneId.systemDefault());
+        zoneForAppt = zoneForAppt.withZoneSameInstant(ZoneId.of("US/Eastern"));
+        appointmentST = zoneForAppt.toLocalDateTime();
+
+        LocalTime businessOpenTime = LocalTime.of(8, 0);
+        LocalTime businessCloseTime = LocalTime.of(22, 0);
+        return ((appointmentST.toLocalTime().isAfter(businessOpenTime) || appointmentST.toLocalTime().equals(businessOpenTime))
+                && (appointmentST.toLocalTime().isBefore(businessCloseTime)));
+    }
+
+    @Override
+    public boolean getAppointmentEndTime(LocalDateTime appointmentET) {
+        ZonedDateTime zoneForAppt = appointmentET.atZone(ZoneId.systemDefault());
+        zoneForAppt = zoneForAppt.withZoneSameInstant(ZoneId.of("US/Eastern"));
+        appointmentET = zoneForAppt.toLocalDateTime();
+
+        LocalTime businessOpenTime = LocalTime.of(8, 0);
+        LocalTime businessCloseTime = LocalTime.of(22, 0);
+        return ((appointmentET.toLocalTime().isAfter(businessOpenTime)) &&
+                (appointmentET.toLocalTime().isBefore(businessCloseTime) || appointmentET.toLocalTime().equals(businessCloseTime)));
     }
 }

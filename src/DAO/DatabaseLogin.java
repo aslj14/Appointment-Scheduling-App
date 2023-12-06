@@ -5,6 +5,8 @@ import Model.Users;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 import static Helper.JDBC.connection;
 
@@ -30,5 +32,10 @@ public class DatabaseLogin {
             System.out.println("Error:" + e.getMessage());
         }
         return null;
+    }
+
+    public static LocalDateTime getLoginLocalDateTime() {
+        LocalDateTime localDT = LocalDateTime.now(ZoneId.systemDefault());
+        return localDT;
     }
 }

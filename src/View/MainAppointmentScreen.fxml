@@ -24,7 +24,7 @@
       </HBox>
       <HBox layoutX="585.0" layoutY="58.0" prefHeight="37.0" prefWidth="390.0">
          <children>
-            <RadioButton fx:id="apptweekview" mnemonicParsing="false" text="View by Week">
+            <RadioButton fx:id="apptweekview" mnemonicParsing="false" onAction="#onActionViewAptsByWeek" text="View by Week">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -35,12 +35,12 @@
                   <ToggleGroup fx:id="mainApptsTG" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="apptmonthview" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="View by Month" toggleGroup="$mainApptsTG">
+            <RadioButton fx:id="apptmonthview" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionViewAptsByMonth" text="View by Month" toggleGroup="$mainApptsTG">
                <padding>
                   <Insets right="20.0" />
                </padding>
             </RadioButton>
-            <RadioButton fx:id="allapptsview" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="View All Appointments" toggleGroup="$mainApptsTG" />
+            <RadioButton fx:id="allapptsview" layoutX="106.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionViewAllAppts" selected="true" text="View All Appointments" toggleGroup="$mainApptsTG" />
          </children>
       </HBox>
       <TableView fx:id="mainapptstableview" layoutX="15.0" layoutY="144.0" prefHeight="200.0" prefWidth="969.0">

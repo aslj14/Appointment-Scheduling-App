@@ -1,6 +1,7 @@
 package Controller;
 
 import DAO.AppointmentsDAO;
+import DAO.DatabaseLogin;
 import DAO.ImplementAppointments;
 import Helper.JDBC;
 import Model.Appointments;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class MainAppointmentController implements Initializable {
@@ -159,6 +161,31 @@ public class MainAppointmentController implements Initializable {
             System.out.println("Error:" + e.getMessage());
         }
     }
+
+    @FXML
+    void onActionViewAllAppts(ActionEvent event) throws IOException {
+        stage = (Stage) ((RadioButton) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainAppointmentScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Appointment Scheduling System");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    void onActionViewAptsByMonth(ActionEvent event) {
+            JDBC.openConnection();
+            AppointmentsDAO appointmentsDAO = new ImplementAppointments();
+            mainapptstableview.setItems(appointmentsDAO.viewApptsByMonth(LocalDate.from(DatabaseLogin.getLoginLocalDateTime())));
+    }
+
+    @FXML
+    void onActionViewAptsByWeek(ActionEvent event) {
+        JDBC.openConnection();
+        AppointmentsDAO appointmentsDAO = new ImplementAppointments();
+        mainapptstableview.setItems(appointmentsDAO.viewApptsByWeek(LocalDate.from(DatabaseLogin.getLoginLocalDateTime())));
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

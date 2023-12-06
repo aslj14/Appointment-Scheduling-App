@@ -4,8 +4,6 @@ import DAO.CustomersDAO;
 import DAO.ImplementCustomers;
 import Helper.JDBC;
 import Model.Customers;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -136,8 +134,13 @@ public class MainCustomerController implements Initializable {
     }
 
     @FXML
-    void onActionViewByMonth(ActionEvent event) {
-
+    void onActionViewByMonth(ActionEvent event) throws IOException {
+        stage = (Stage) ((RadioButton) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("MainAppointmentScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Appointment Scheduling System");
+        stage.setScene(scene);
+        stage.show();
     }
 
 
