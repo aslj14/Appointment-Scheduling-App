@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox layoutX="14.0" layoutY="26.0" prefHeight="62.0" prefWidth="200.0">
          <children>
@@ -22,38 +22,29 @@
             </Label>
          </children>
       </HBox>
-      <TableView layoutX="42.0" layoutY="189.0" prefHeight="200.0" prefWidth="793.0">
+      <TableView fx:id="monthtypetableview" layoutX="97.0" layoutY="205.0" prefHeight="200.0" prefWidth="539.0">
          <columns>
-            <TableColumn prefWidth="126.66665267944336" text="Customer ID" />
-            <TableColumn prefWidth="99.99998474121094" text="Name" />
-            <TableColumn prefWidth="153.99996948242188" text="Address" />
-            <TableColumn prefWidth="100.66671752929688" text="State/Province" />
-            <TableColumn minWidth="0.0" prefWidth="84.6666259765625" text="Country" />
-            <TableColumn minWidth="0.0" prefWidth="113.33331298828125" text="Postal Code" />
-            <TableColumn prefWidth="109.3333740234375" text="Phone Number" />
+            <TableColumn fx:id="reportmonthcol" prefWidth="157.99999237060547" text="Month" />
+            <TableColumn fx:id="reporttypecol" prefWidth="204.00001525878906" text="Type" />
+            <TableColumn fx:id="monthtypetotalcol" prefWidth="176.66659545898438" text="Total" />
          </columns>
       </TableView>
       <HBox layoutX="80.0" layoutY="96.0" prefHeight="30.0" prefWidth="770.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="Contact Schedule">
+            <RadioButton fx:id="monthtypescheduleradio" mnemonicParsing="false" text="Contact Schedule">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="171.0" text="Total Customers by Type">
+            <RadioButton fx:id="totalmonthtyperadio" mnemonicParsing="false" prefHeight="17.0" prefWidth="248.0" text="Total Appointments by Month and Type">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Total Customers by Month">
-               <HBox.margin>
-                  <Insets right="50.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton layoutX="395.0" layoutY="10.0" mnemonicParsing="false" text="Total Customers by Country" />
+            <RadioButton fx:id="totalbycountryradio" layoutX="395.0" layoutY="10.0" mnemonicParsing="false" text="Total Appointments by Country" />
          </children>
       </HBox>
-      <HBox layoutX="638.0" layoutY="456.0" prefHeight="30.0" prefWidth="248.0">
+      <HBox layoutX="561.0" layoutY="456.0" prefHeight="30.0" prefWidth="248.0">
          <children>
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Cancel">
                <HBox.margin>
@@ -63,24 +54,20 @@
             <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Logout" />
          </children>
       </HBox>
-      <HBox layoutX="242.0" layoutY="136.0" prefHeight="39.0" prefWidth="394.0">
+      <HBox layoutX="291.0" layoutY="127.0" prefHeight="39.0" prefWidth="394.0">
          <children>
-            <Label text="Month:">
-               <HBox.margin>
-                  <Insets right="10.0" top="10.0" />
-               </HBox.margin>
-            </Label>
-            <ComboBox prefWidth="150.0">
+            <ComboBox fx:id="contactmonthtypebox" prefWidth="150.0">
                <HBox.margin>
                   <Insets right="20.0" top="6.0" />
                </HBox.margin>
             </ComboBox>
-            <Label layoutX="10.0" layoutY="20.0" text="Total Customers:">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </Label>
          </children>
       </HBox>
+      <Label fx:id="selectcontactlabel" layoutX="187.0" layoutY="138.0" prefHeight="17.0" prefWidth="126.0" text="Select a Contact:" />
+      <Label fx:id="totalapptslabel" layoutX="291.0" layoutY="166.0" prefHeight="17.0" prefWidth="169.0" text="Total # of Appointments:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

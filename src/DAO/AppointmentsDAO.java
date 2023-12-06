@@ -13,6 +13,8 @@ public interface AppointmentsDAO {
 
     public Appointments getAppointments(int appointmentsID);
 
+    public ObservableList<Appointments> getContactAppts(int appointmentContactID);
+
     public int addNewAppointment(String appointmentTitle, String appointmentDesc,
                                   String appointmentLocation, String appointmentType,
                                   LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,

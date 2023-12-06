@@ -4,6 +4,7 @@ import Model.Appointments;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 
 import java.sql.PreparedStatement;
@@ -90,6 +91,44 @@ public class ImplementAppointments implements AppointmentsDAO {
             System.out.println("Error:" + e.getMessage());
         }
         return null;
+    }
+
+    @Override
+    public ObservableList<Appointments> getContactAppts(int appointmentContactID) {
+        ObservableList<Appointments> contactAppts = FXCollections.observableArrayList();
+
+        try {
+            String sql = "SELECT * FROM appointments WHERE Contact_ID = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, appointmentContactID);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int appointmentID = rs.getInt("Appointment_ID");
+                appointmentContactID = rs.getInt("Contact_ID");
+                String appointmentTitle = rs.getString("Title");
+                String appointmentDesc = rs.getString("Description");
+                String appointmentLocation = rs.getString("Location");
+                String appointmentType = rs.getString("Type");
+                LocalDateTime appointmentStartDateTime = rs.getTimestamp("Start").toLocalDateTime();
+                LocalDate appointmentsStartDate = appointmentStartDateTime.toLocalDate();
+                LocalTime appointmentStartTime = appointmentStartDateTime.toLocalTime();
+                LocalDateTime appointmentEndDateTime = rs.getTimestamp("End").toLocalDateTime();
+                LocalDate appointmentEndDate = appointmentEndDateTime.toLocalDate();
+                LocalTime appointmentEndTime = appointmentEndDateTime.toLocalTime();
+                int appointmentsCustomerID = rs.getInt("Customer_ID");
+                int appointmentsUserID = rs.getInt("User_ID");
+                Appointments appointments = new Appointments(appointmentID,appointmentTitle, appointmentDesc,
+                                            appointmentLocation, appointmentType, appointmentStartDateTime, appointmentsStartDate,
+                                            appointmentStartTime, appointmentEndDateTime, appointmentEndDate, appointmentEndTime,
+                                            appointmentsCustomerID, appointmentsUserID, appointmentContactID);
+                contactAppts.add(appointments);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: ");
+            e.printStackTrace();
+        }
+        return contactAppts;
     }
 
     @Override

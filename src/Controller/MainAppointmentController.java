@@ -5,7 +5,6 @@ import DAO.DatabaseLogin;
 import DAO.ImplementAppointments;
 import Helper.JDBC;
 import Model.Appointments;
-import Model.Customers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
