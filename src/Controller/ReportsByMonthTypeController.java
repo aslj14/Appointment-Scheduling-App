@@ -1,13 +1,9 @@
 package Controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
-public class ReportsMonthController {
+public class ReportsByMonthTypeController {
 
     @FXML
     private ComboBox<?> contactmonthtypebox;
@@ -35,6 +31,9 @@ public class ReportsMonthController {
 
     @FXML
     private RadioButton totalbycountryradio;
+
+    @FXML
+    private ToggleGroup totalbymonthtypeTG;
 
     @FXML
     private RadioButton totalmonthtyperadio;

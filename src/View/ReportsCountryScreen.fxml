@@ -7,6 +7,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -22,45 +23,42 @@
             </Label>
          </children>
       </HBox>
-      <TableView layoutX="42.0" layoutY="189.0" prefHeight="200.0" prefWidth="793.0">
+      <TableView fx:id="countrycuststableview" layoutX="36.0" layoutY="205.0" prefHeight="200.0" prefWidth="709.0">
          <columns>
-            <TableColumn prefWidth="126.66665267944336" text="Customer ID" />
-            <TableColumn prefWidth="99.99998474121094" text="Name" />
-            <TableColumn prefWidth="153.99996948242188" text="Address" />
-            <TableColumn prefWidth="100.66671752929688" text="State/Province" />
-            <TableColumn minWidth="0.0" prefWidth="84.6666259765625" text="Country" />
-            <TableColumn minWidth="0.0" prefWidth="113.33331298828125" text="Postal Code" />
-            <TableColumn prefWidth="109.3333740234375" text="Phone Number" />
+            <TableColumn fx:id="customeridcol" prefWidth="126.66665267944336" text="Customer ID" />
+            <TableColumn fx:id="custsnamecol" prefWidth="99.99998474121094" text="Name" />
+            <TableColumn fx:id="custaddresscol" prefWidth="153.99996948242188" text="Address" />
+            <TableColumn fx:id="custsstateprovincecol" prefWidth="100.66671752929688" text="State/Province" />
+            <TableColumn fx:id="custspostalcol" minWidth="0.0" prefWidth="98.6666259765625" text="Postal Code" />
+            <TableColumn fx:id="custscountrycol" minWidth="0.0" prefWidth="128.0" text="Country" />
          </columns>
       </TableView>
       <HBox layoutX="80.0" layoutY="96.0" prefHeight="30.0" prefWidth="770.0">
          <children>
-            <RadioButton mnemonicParsing="false" text="Contact Schedule">
+            <RadioButton fx:id="contactsched" mnemonicParsing="false" onAction="#onActionDisplayContactSchedule" text="Contact Schedule">
+               <HBox.margin>
+                  <Insets right="50.0" />
+               </HBox.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="totalbycountryTG" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="totalbymonthtype" mnemonicParsing="false" onAction="#onActionDisplayMonthType" prefHeight="17.0" prefWidth="248.0" text="Total Appointments by Month and Type" toggleGroup="$totalbycountryTG">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="171.0" text="Total Customers by Type">
-               <HBox.margin>
-                  <Insets right="50.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Total Customers by Month">
-               <HBox.margin>
-                  <Insets right="50.0" />
-               </HBox.margin>
-            </RadioButton>
-            <RadioButton layoutX="395.0" layoutY="10.0" mnemonicParsing="false" text="Total Customers by Country" />
+            <RadioButton fx:id="totalcustsbycountry" layoutX="395.0" layoutY="10.0" mnemonicParsing="false" selected="true" text="Total Customers by Country" toggleGroup="$totalbycountryTG" />
          </children>
       </HBox>
       <HBox layoutX="638.0" layoutY="456.0" prefHeight="30.0" prefWidth="248.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Cancel">
+            <Button mnemonicParsing="false" onAction="#onActionDisplayMain" prefHeight="25.0" prefWidth="136.0" text="Cancel">
                <HBox.margin>
                   <Insets right="60.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Logout" />
+            <Button mnemonicParsing="false" onAction="#onActionExit" prefHeight="25.0" prefWidth="136.0" text="Logout" />
          </children>
       </HBox>
       <HBox layoutX="242.0" layoutY="133.0" prefHeight="39.0" prefWidth="394.0">
@@ -70,17 +68,17 @@
                   <Insets right="10.0" top="10.0" />
                </HBox.margin>
             </Label>
-            <ComboBox prefWidth="150.0">
+            <ComboBox fx:id="countrycombobox" onAction="#onActionFillTableview" prefWidth="150.0">
                <HBox.margin>
                   <Insets right="20.0" top="6.0" />
                </HBox.margin>
             </ComboBox>
-            <Label layoutX="10.0" layoutY="20.0" text="Total Customers:">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-            </Label>
          </children>
       </HBox>
+      <Label fx:id="totalcustslabel" layoutX="295.0" layoutY="172.0" prefHeight="17.0" prefWidth="169.0" text="Total # of Customers:">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
