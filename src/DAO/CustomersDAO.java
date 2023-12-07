@@ -9,6 +9,8 @@ public interface CustomersDAO {
 
     public Customers getCustomer(int appointmentCustomerID);
 
+    public ObservableList<Customers> getCustomerCountry(int appointmentCountryID);
+
     public int addNewCustomers(String appointmentCustomerName, String appointmentCustomerAddress,
                                String appointmentCustomerPostalCode, String appointmentCustomerPhoneNumber,
                                int appointmentCustomerDivisionID);

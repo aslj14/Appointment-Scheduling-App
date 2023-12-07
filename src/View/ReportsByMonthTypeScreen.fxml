@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReportsByMonthTypeController">
    <children>
       <HBox layoutX="14.0" layoutY="26.0" prefHeight="62.0" prefWidth="200.0">
          <children>
@@ -32,7 +32,7 @@
       </TableView>
       <HBox layoutX="80.0" layoutY="96.0" prefHeight="30.0" prefWidth="770.0">
          <children>
-            <RadioButton fx:id="monthtypescheduleradio" mnemonicParsing="false" text="Contact Schedule">
+            <RadioButton fx:id="monthtypescheduleradio" mnemonicParsing="false" onAction="#onActionShowContactSchedule" text="Contact Schedule">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
@@ -40,27 +40,27 @@
                   <ToggleGroup fx:id="totalbymonthtypeTG" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="totalmonthtyperadio" mnemonicParsing="false" prefHeight="17.0" prefWidth="248.0" selected="true" text="Total Appointments by Month and Type" toggleGroup="$totalbymonthtypeTG">
+            <RadioButton fx:id="totalmonthtyperadio" mnemonicParsing="false" onAction="#onActionShowMonthType" prefHeight="17.0" prefWidth="248.0" selected="true" text="Total Appointments by Month and Type" toggleGroup="$totalbymonthtypeTG">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="totalbycountryradio" layoutX="395.0" layoutY="10.0" mnemonicParsing="false" text="Total Appointments by Country" toggleGroup="$totalbymonthtypeTG" />
+            <RadioButton fx:id="totalbycountryradio" layoutX="395.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionShowTotalByCountry" text="Total Appointments by Country" toggleGroup="$totalbymonthtypeTG" />
          </children>
       </HBox>
       <HBox layoutX="561.0" layoutY="456.0" prefHeight="30.0" prefWidth="248.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Cancel">
+            <Button mnemonicParsing="false" onAction="#onActionReturnToMainScreen" prefHeight="25.0" prefWidth="136.0" text="Cancel">
                <HBox.margin>
                   <Insets right="60.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" text="Logout" />
+            <Button mnemonicParsing="false" onAction="#onActionExit" prefHeight="25.0" prefWidth="136.0" text="Logout" />
          </children>
       </HBox>
       <HBox layoutX="291.0" layoutY="127.0" prefHeight="39.0" prefWidth="394.0">
          <children>
-            <ComboBox fx:id="contactmonthtypebox" prefWidth="150.0">
+            <ComboBox fx:id="contactmonthtypebox" onAction="#onActionGetContact" prefWidth="150.0">
                <HBox.margin>
                   <Insets right="20.0" top="6.0" />
                </HBox.margin>

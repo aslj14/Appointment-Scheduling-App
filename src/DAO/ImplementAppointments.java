@@ -132,6 +132,43 @@ public class ImplementAppointments implements AppointmentsDAO {
     }
 
     @Override
+    public ObservableList<Appointments> getCustomerAppts(int appointmentCustomerID) {
+        ObservableList<Appointments> apptsByCustomer = FXCollections.observableArrayList();
+
+        try {
+            String sql = "SELECT * FROM appointments WHERE Customer_ID = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, appointmentCustomerID);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int appointmentID = rs.getInt("Appointment_ID");
+                int appointmentContactID = rs.getInt("Contact_ID");
+                String appointmentTitle = rs.getString("Title");
+                String appointmentDesc = rs.getString("Description");
+                String appointmentLocation = rs.getString("Location");
+                String appointmentType = rs.getString("Type");
+                LocalDateTime appointmentStartDateTime = rs.getTimestamp("Start").toLocalDateTime();
+                LocalDate appointmentsStartDate = appointmentStartDateTime.toLocalDate();
+                LocalTime appointmentStartTime = appointmentStartDateTime.toLocalTime();
+                LocalDateTime appointmentEndDateTime = rs.getTimestamp("End").toLocalDateTime();
+                LocalDate appointmentEndDate = appointmentEndDateTime.toLocalDate();
+                LocalTime appointmentEndTime = appointmentEndDateTime.toLocalTime();
+                appointmentCustomerID = rs.getInt("Customer_ID");
+                int appointmentsUserID = rs.getInt("User_ID");
+                Appointments appointments = new Appointments(appointmentID,appointmentTitle, appointmentDesc,
+                        appointmentLocation, appointmentType, appointmentStartDateTime, appointmentsStartDate,
+                        appointmentStartTime, appointmentEndDateTime, appointmentEndDate, appointmentEndTime,
+                        appointmentCustomerID, appointmentsUserID, appointmentContactID);
+                apptsByCustomer.add(appointments);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return apptsByCustomer;
+    }
+
+    @Override
     public int addNewAppointment(String appointmentTitle, String appointmentDesc,
                                  String appointmentLocation, String appointmentType,
                                  LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,

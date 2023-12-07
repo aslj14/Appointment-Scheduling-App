@@ -23,9 +23,9 @@
             </Label>
          </children>
       </HBox>
-      <HBox layoutX="80.0" layoutY="96.0" prefHeight="30.0" prefWidth="770.0">
+      <HBox fx:id="totalapptscountry" layoutX="80.0" layoutY="96.0" prefHeight="30.0" prefWidth="770.0">
          <children>
-            <RadioButton fx:id="maincontactsched" mnemonicParsing="false" selected="true" text="Contact Schedule">
+            <RadioButton fx:id="maincontactsched" mnemonicParsing="false" prefHeight="17.0" prefWidth="143.0" selected="true" text="Contact Schedule">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
@@ -38,7 +38,7 @@
                   <Insets right="50.0" />
                </HBox.margin>
             </RadioButton>
-            <RadioButton fx:id="contactcustsbycountry" layoutX="395.0" layoutY="10.0" mnemonicParsing="false" text="Total Appointments by Country" toggleGroup="$reportscontactsTG" />
+            <RadioButton fx:id="contactcustsbycountry" layoutX="395.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionShowReportsCountry" text="Total Appointments by Country" toggleGroup="$reportscontactsTG" />
          </children>
       </HBox>
       <HBox layoutX="638.0" layoutY="456.0" prefHeight="30.0" prefWidth="248.0">

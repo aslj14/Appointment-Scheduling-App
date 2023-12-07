@@ -78,6 +78,41 @@ public class ImplementCustomers implements CustomersDAO {
     }
 
     @Override
+    public ObservableList<Customers> getCustomerCountry(int appointmentCountryID) {
+        ObservableList<Customers> customerCountry = FXCollections.observableArrayList();
+        try {
+            String sql = "SELECT * FROM customers, first_level_divisions, countries WHERE " +
+                    "customers.Division_ID = first_level_divisions.Division_ID AND " +
+                    "first_level_divisions.Country_ID = countries.Country_ID AND countries.Country_ID = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, appointmentCountryID);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int appointmentCustomerID = rs.getInt("Customer_ID");
+                String appointmentCustomerName = rs.getString("Customer_Name");
+                String appointmentCustomerAddress = rs.getString("Address");
+                String appointmentCustomerPostalCode = rs.getString("Postal_Code");
+                appointmentCountryID = rs.getInt("Country_ID");
+                String appointmentCustomerCountry = rs.getString("Country");
+                int appointmentCustomerDivisionID = rs.getInt("Division_ID");
+                String appointmentCustomerDivision = rs.getString("Division");
+                String appointmentCustomerPhoneNumber = rs.getString("Phone");
+                Customers customers = new Customers(appointmentCustomerID, appointmentCustomerName,
+                        appointmentCustomerAddress, appointmentCountryID, appointmentCustomerCountry,
+                        appointmentCustomerPostalCode, appointmentCustomerPhoneNumber,
+                        appointmentCustomerDivisionID, appointmentCustomerDivision);
+                customerCountry.add(customers);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: ");
+            e.printStackTrace();
+        }
+        return customerCountry;
+    }
+
+
+    @Override
     public int addNewCustomers(String appointmentCustomerName, String appointmentCustomerAddress,
                                String appointmentCustomerPostalCode, String appointmentCustomerPhoneNumber,
                                int appointmentCustomerDivisionID) {

@@ -15,6 +15,8 @@ public interface AppointmentsDAO {
 
     public ObservableList<Appointments> getContactAppts(int appointmentContactID);
 
+    public ObservableList<Appointments> getCustomerAppts(int appointmentCustomerID);
+
     public int addNewAppointment(String appointmentTitle, String appointmentDesc,
                                   String appointmentLocation, String appointmentType,
                                   LocalDateTime appointmentStartDateTime, LocalDateTime appointmentEndDateTime,

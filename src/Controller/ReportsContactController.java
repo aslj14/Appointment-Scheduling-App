@@ -126,6 +126,17 @@ public class ReportsContactController implements Initializable {
             stage.show();
     }
 
+    @FXML
+    void onActionShowReportsCountry(ActionEvent event) throws IOException {
+        stage = (Stage) ((RadioButton) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ReportsCountryScreen.fxml"));
+        Scene scene = new Scene(loader.load());
+        stage.setTitle("Appointment Scheduling System");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
