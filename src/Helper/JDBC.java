@@ -1,8 +1,19 @@
 package Helper;
 
+import Model.Users;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ *
+ * This is the class for the JDBC.
+ * This class holds the methods that will establish the connection to the database and then open and close that
+ * connection.
+ *
+ * @author Ariel Johnson
+ *
+ */
 public abstract class JDBC {
     private static final String protocol = "jdbc";
     private static final String vendor = ":mysql:";
@@ -12,8 +23,15 @@ public abstract class JDBC {
     private static final String driver = "com.mysql.cj.jdbc.Driver"; // Driver reference
     private static final String userName = "sqlUser"; // Username
     private static String password = "Passw0rd!"; // Password
+
+    public static Users currentUser;
     public static Connection connection;  // Connection Interface
 
+    /**
+     *
+     * This method will open the connection to the database.
+     *
+     */
     public static void openConnection()
     {
         try {
@@ -27,6 +45,11 @@ public abstract class JDBC {
         }
     }
 
+    /**
+     *
+     * This method will close the connection to the database.
+     *
+     */
     public static void closeConnection() {
         try {
             connection.close();

@@ -2,7 +2,6 @@ package DAO;
 
 import Helper.JDBC;
 import Model.Countries;
-import Model.Divisions;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,10 +10,30 @@ import java.sql.ResultSet;
 
 import static Helper.JDBC.connection;
 
+/**
+ *
+ * This is the implementation class that implements the Countries DAO class.
+ *
+ * @author Ariel Johnson
+ *
+ */
 public class ImplementCountries implements CountriesDAO {
 
+    /**
+     *
+     * The ObservableList of all of the countries in the database.
+     *
+     */
     ObservableList<Countries> allCountries = FXCollections.observableArrayList();
 
+    /**
+     *
+     * This is the method that will get all of the countries from the database and add the countries to an
+     * observable list.
+     *
+     * @return A list of all the countries.
+     *
+     */
     @Override
     public ObservableList<Countries> getAllCountries() {
         try {
@@ -34,6 +53,15 @@ public class ImplementCountries implements CountriesDAO {
         return allCountries;
         }
 
+    /**
+     *
+     * This is the method that will get a particular country in accordance with that particular country's
+     * ID.
+     *
+     * @param countryID This is the particular country's ID.
+     * @return The particular country's information is returned.
+     *
+     */
     @Override
     public Countries getCountry(int countryID) {
         try {
@@ -55,6 +83,15 @@ public class ImplementCountries implements CountriesDAO {
         return null;
     }
 
+    /**
+     *
+     * This is the Add Country method that will permit the user to add a new country to the
+     * database..
+     *
+     * @param newCountry The new country's name.
+     * @return The amount of rows in the database that were affected.
+     *
+     */
     @Override
     public int addNewCountry(String newCountry) {
         int affectedRows = 0;
@@ -69,6 +106,17 @@ public class ImplementCountries implements CountriesDAO {
             return affectedRows;
     }
 
+    /**
+     *
+     * This is the Modify Country method that will allow for a selected country to be
+     * modified/edited.
+     *
+     * @param newCountryID The ID for the modified country.
+     * @param currentCountry The current name of the country.
+     * @param newCountry The new name of the country.
+     * @return The amount of rows in the database that were affected.
+     *
+     */
     @Override
     public int modifyCountry(int newCountryID, String currentCountry, String newCountry) {
         int affectedRows = 0;
@@ -85,6 +133,16 @@ public class ImplementCountries implements CountriesDAO {
         return affectedRows;
     }
 
+    /**
+     *
+     * This is the Delete Country method that will delete a selected country
+     * from the database.
+     *
+     * @param currentCountryID The ID of the current country.
+     * @param currentCountryName The name of the current country.
+     * @return The amount of rows in the database that were affected.
+     *
+     */
     @Override
     public int deleteCountry(int currentCountryID, String currentCountryName) {
         int affectedRows = 0;

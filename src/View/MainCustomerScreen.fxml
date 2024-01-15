@@ -24,7 +24,7 @@
       </HBox>
       <HBox layoutX="415.0" layoutY="67.0" prefHeight="37.0" prefWidth="390.0">
          <children>
-            <RadioButton fx:id="maincustviewbywk" mnemonicParsing="false" onAction="#onActionViewByMonth" text="View by Week">
+            <RadioButton fx:id="maincustviewbywk" mnemonicParsing="false" onAction="#onActionViewByWeek" text="View by Week">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

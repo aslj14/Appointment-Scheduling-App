@@ -23,12 +23,11 @@
             </Label>
          </children>
       </HBox>
-      <TableView fx:id="countrycuststableview" layoutX="36.0" layoutY="205.0" prefHeight="200.0" prefWidth="709.0">
+      <TableView fx:id="countrycuststableview" layoutX="36.0" layoutY="205.0" prefHeight="200.0" prefWidth="611.0">
          <columns>
             <TableColumn fx:id="customeridcol" prefWidth="126.66665267944336" text="Customer ID" />
             <TableColumn fx:id="custsnamecol" prefWidth="99.99998474121094" text="Name" />
             <TableColumn fx:id="custaddresscol" prefWidth="153.99996948242188" text="Address" />
-            <TableColumn fx:id="custsstateprovincecol" prefWidth="100.66671752929688" text="State/Province" />
             <TableColumn fx:id="custspostalcol" minWidth="0.0" prefWidth="98.6666259765625" text="Postal Code" />
             <TableColumn fx:id="custscountrycol" minWidth="0.0" prefWidth="128.0" text="Country" />
          </columns>

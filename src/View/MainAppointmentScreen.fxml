@@ -52,8 +52,8 @@
             <TableColumn fx:id="mainapptscontactcol" prefWidth="72.6666259765625" text="Contact" />
             <TableColumn fx:id="mainapptstypecol" prefWidth="76.6666259765625" text="Type" />
             <TableColumn fx:id="mainapptsstartdatecol" prefWidth="80.66665649414062" text="Start Date" />
-            <TableColumn fx:id="mainapptsenddatecol" prefWidth="76.66668701171875" text="End Date" />
-            <TableColumn fx:id="mainapptsstarttimecol" prefWidth="70.6666259765625" text="Start Time" />
+            <TableColumn fx:id="mainapptsstarttimecol" prefWidth="76.66668701171875" text="Start Time" />
+            <TableColumn fx:id="mainapptsenddatecol" prefWidth="70.6666259765625" text="End Date" />
             <TableColumn fx:id="mainapptsendtimecol" prefWidth="81.33331298828125" text="End Time" />
             <TableColumn fx:id="mainapptscustomeridcol" prefWidth="87.99993896484375" text="Customer ID" />
             <TableColumn fx:id="mainapptsuseridcol" prefWidth="102.66664632161462" text="User ID" />
